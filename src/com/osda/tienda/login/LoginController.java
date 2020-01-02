@@ -3,6 +3,7 @@ package com.osda.tienda.login;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.osda.tienda.login.forgetpass.ForgetPassController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +39,7 @@ public class LoginController {
 
     @FXML
     void lblForgetOnMouseClicked(MouseEvent event) {
-
+    	 new ForgetPassController().showWindow();
     }
 
 }

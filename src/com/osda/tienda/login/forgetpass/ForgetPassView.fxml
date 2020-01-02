@@ -1,8 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.osda.tienda.login.forgetpass.ForgetPassController">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.forgetpass.ForgetPassController">
+	<children>
+		<VBox alignment="CENTER" prefHeight="500.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<children>
+				<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@../../../../../../../../../../../../../home/david/Imágenes/Screenshot_20191220_013736.png" />
+					</image>
+				</ImageView>
+				<Pane fx:id="paneAdmin" accessibleText="s" prefHeight="200.0" prefWidth="260.0">
+					<children>
+						<VBox alignment="TOP_RIGHT" prefHeight="120.0" prefWidth="260.0">
+							<children>
+								<JFXTextField fx:id="txtUserAdmin" labelFloat="true" promptText="Usuario">
+									<VBox.margin>
+										<Insets top="20.0" />
+									</VBox.margin>
+								</JFXTextField>
+								<JFXPasswordField fx:id="txtPassAdmin" labelFloat="true" promptText="Contraseña">
+									<VBox.margin>
+										<Insets top="20.0" />
+									</VBox.margin>
+								</JFXPasswordField>
+								<JFXButton fx:id="btnCheck" alignment="TOP_LEFT" onAction="#btnCheckOnAction" text="VALIDAR">
+									<VBox.margin>
+										<Insets right="20.0" top="25.0" />
+									</VBox.margin>
+								</JFXButton>
+							</children>
+							<padding>
+								<Insets bottom="10.0" left="10.0" right="10.0" />
+							</padding>
+						</VBox>
+					</children>
+					<VBox.margin>
+						<Insets top="10.0" />
+					</VBox.margin>
+				</Pane>
+				<Pane fx:id="paneUser" disable="true" prefHeight="200.0" prefWidth="260.0">
+					<children>
+						<VBox alignment="TOP_RIGHT" prefHeight="126.0" prefWidth="260.0">
+							<children>
+								<JFXTextField fx:id="txtPassNew" labelFloat="true" promptText="Contraseña nueva">
+									<VBox.margin>
+										<Insets top="20.0" />
+									</VBox.margin>
+								</JFXTextField>
+								<JFXTextField fx:id="txtComfimPass" labelFloat="true" promptText="Confirmar contraseña">
+									<VBox.margin>
+										<Insets top="20.0" />
+									</VBox.margin>
+								</JFXTextField>
+								<JFXButton fx:id="btnConfirm" onAction="#btnConfirmOnAction" text="CONFIRMAR">
+									<VBox.margin>
+										<Insets right="5.0" top="25.0" />
+									</VBox.margin>
+								</JFXButton>
+							</children>
+							<padding>
+								<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+							</padding>
+						</VBox>
+					</children>
+				</Pane>
+				<HBox prefHeight="36.0" prefWidth="260.0">
+					<children>
+						<JFXButton fx:id="btnCancelar" alignment="TOP_RIGHT" onAction="#btnCancelarOnAction" text="CANCELAR" />
+					</children>
+				</HBox>
+			</children>
+			<padding>
+				<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+			</padding>
+		</VBox>
+	</children>
 </AnchorPane>
