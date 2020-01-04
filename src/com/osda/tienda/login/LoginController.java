@@ -1,8 +1,12 @@
 package com.osda.tienda.login;
 
+import java.sql.SQLException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.osda.tienda.dbconection.CRUD;
+import com.osda.tienda.dbconection.ConnectionDB;
 import com.osda.tienda.login.forgetpass.ForgetPassController;
 
 import javafx.event.ActionEvent;
@@ -28,13 +32,15 @@ public class LoginController {
     private JFXButton btnStart;
 
     @FXML
-    void btnCancelOnAction(ActionEvent event) {
-
+    void btnCancelOnAction(ActionEvent event) throws SQLException {
+    	ConnectionDB.closeConnection();
+    	System.exit(0);
     }
 
     @FXML
-    void btnStartOnAction(ActionEvent event) {
-
+    void btnStartOnAction(ActionEvent event) throws ClassNotFoundException, SQLException {
+    	ConnectionDB.getConnection();
+    	new CRUD().loginUser(txtUsuario.getText().toString().trim(), txtPassword.getText().toString().trim());
     }
 
     @FXML
