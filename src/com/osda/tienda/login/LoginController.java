@@ -18,16 +18,12 @@ public class LoginController {
 
     @FXML
     private JFXTextField txtUsuario;
-
     @FXML
     private JFXPasswordField txtPassword;
-
     @FXML
     private Label lblForget;
-
     @FXML
     private JFXButton btnCancel;
-
     @FXML
     private JFXButton btnStart;
 
