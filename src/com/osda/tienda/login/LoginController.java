@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class LoginController {
-
+	
     @FXML
     private JFXTextField txtUsuario;
     @FXML
