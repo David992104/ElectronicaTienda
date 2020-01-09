@@ -35,6 +35,7 @@ public class ConnectionDB {
 		if (connection != null) {
 			connection.close();
 			System.out.println("Conexion cerrada");
+			connection = null;
 		}
 	}
 
