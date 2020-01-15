@@ -12,16 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="275.0" maxWidth="200.0"
-	minHeight="250.0" minWidth="200.0" prefHeight="275.0" prefWidth="200.0"
-	xmlns="http://javafx.com/javafx/8.0.171"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.osda.tienda.login.LoginController"
-	fx:id="anchorPaneLogin">
+<AnchorPane fx:id="anchorPaneLogin" maxHeight="275.0" maxWidth="200.0" minHeight="250.0" minWidth="200.0" prefHeight="275.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.LoginController">
    <children>
-      <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox alignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <ImageView fitHeight="122.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true" fx:id="imgLogin">
+            <ImageView fx:id="imgLogin" fitHeight="122.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/resources/user.png" />
                </image>

@@ -50,7 +50,7 @@ public class LoginController {
 					txtPassword.getText().toString().trim());
 			imgLogin.setImage(new Image(url));
 			
-			if (loginModel.isLogAcepted())
+			if (loginModel.isLogAcepted())				
 				loginModel.goToPrincipal(anchorPaneLogin);
 		}
 	}
