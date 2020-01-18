@@ -1,8 +1,13 @@
 package com.osda.tienda.principal;
 
 import java.io.IOException;
+<<<<<<< HEAD
 
 import com.osda.tienda.login.LoginModel;
+=======
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+>>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,8 +17,11 @@ import javafx.stage.Stage;
 
 public class PrincipalModel {
 	
+<<<<<<< HEAD
 	private String nombre;
 	
+=======
+>>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 	public void closeSesion(BorderPane principal) throws IOException {
 	
 		principal.getScene().getWindow().hide();
@@ -41,6 +49,7 @@ public class PrincipalModel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 	}
 	
 	public String getNombre() {
@@ -52,5 +61,23 @@ public class PrincipalModel {
 	}
 	
 
+=======
+	}
+	
+	public String getDate() {
+		Calendar calendar = new GregorianCalendar();
+		return calendar.get(Calendar.DAY_OF_MONTH) + " de " +
+				(calendar.get(Calendar.MONTH ) + 1) + " del " + 
+				calendar.get(Calendar.YEAR);
+	}
+	
+	public String getTime() {
+		Calendar calendario = new GregorianCalendar();
+		
+		return calendario.get(Calendar.HOUR_OF_DAY) + ":" +
+				calendario.get(Calendar.MINUTE)+":"+
+				calendario.get(Calendar.SECOND);
+	}
+>>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 	
 }

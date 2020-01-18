@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.osda.tienda.notification.Notification;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,19 +40,19 @@ public class LoginController {
 
 	@FXML
 	void btnStartOnAction(ActionEvent event) throws ClassNotFoundException, SQLException {
-		if (txtUsuario.getText().toString() == "")
+		if (txtUsuario.getText().toString().trim().equals("")) {
 			txtUsuario.forward();
-		
-		else if (txtPassword.getText().toString().equals(""))
+			Notification.showMessage("Revisa tu informacion");
+		}else if (txtPassword.getText().toString().equals("")) {
 			txtPassword.isFocused();
-		
-		else if (txtPassword.getText().toString() != "" && txtUsuario.getText().toString() != "") {
+			Notification.showMessage("Revisa tu informacion");
+		}else if (txtPassword.getText().toString() != "" && txtUsuario.getText().toString() != "") {
 			String url = loginModel.logNow(txtUsuario.getText().toString().trim(),
 					txtPassword.getText().toString().trim());
 			imgLogin.setImage(new Image(url));
 			
-			if (loginModel.isLogAcepted())
-				loginModel.goToPrincipal(anchorPaneLogin);
+			if (loginModel.isLogAcepted())				
+				loginModel.goToPrincipal(anchorPaneLogin);			
 		}
 	}
 

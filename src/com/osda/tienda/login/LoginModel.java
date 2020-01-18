@@ -5,14 +5,18 @@ import java.sql.SQLException;
 
 import com.osda.tienda.dbconection.CRUD;
 import com.osda.tienda.dbconection.ConnectionDB;
-import com.osda.tienda.login.forgetpass.ForgetPassController;
+import com.osda.tienda.login.forgetpass.ForgetPassModel;
 import com.osda.tienda.principal.PrincipalModel;
 
 import javafx.scene.layout.AnchorPane;
 
 public class LoginModel {
 	private boolean logAcepted;
+<<<<<<< HEAD
 	private String nombre;
+=======
+	public static String nombre;
+>>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 	
 	public String logNow(String user, String pass) throws ClassNotFoundException, SQLException {
 		String urlImg = "";
@@ -28,7 +32,11 @@ public class LoginModel {
 		if (result.equals("Bienvenido")) {
 			urlImg = "/resources/bien.png";
 			setLogAcepted(true);
+<<<<<<< HEAD
 			setNombre(user);
+=======
+			LoginModel.nombre = user; //MAndamos el user a la principal
+>>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 		}else {
 			urlImg = "/resources/mal.png";
 			setLogAcepted(false);
@@ -43,7 +51,7 @@ public class LoginModel {
 	}
 	
 	public void goToForegetPass() {
-		new ForgetPassController().showWindow();
+		new ForgetPassModel().showWindow();
 	}
 	
 	public void goToPrincipal(AnchorPane root) {
@@ -60,6 +68,7 @@ public class LoginModel {
 		this.logAcepted = logAcepted;
 	}
 	
+<<<<<<< HEAD
 	public String getNombre() {
 		return nombre;
 	}
@@ -67,4 +76,6 @@ public class LoginModel {
 		this.nombre = nombre;
 	}
 
+=======
+>>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 }
