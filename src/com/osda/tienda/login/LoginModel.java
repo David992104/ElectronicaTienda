@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class LoginModel {
 	private boolean logAcepted;
+	private String nombre;
 	
 	public String logNow(String user, String pass) throws ClassNotFoundException, SQLException {
 		String urlImg = "";
@@ -27,12 +28,11 @@ public class LoginModel {
 		if (result.equals("Bienvenido")) {
 			urlImg = "/resources/bien.png";
 			setLogAcepted(true);
+			setNombre(user);
 		}else {
 			urlImg = "/resources/mal.png";
 			setLogAcepted(false);
 		}
-		
-		//return (result.equals("Bienvenido")) ? "/resources/bien.png" : "/resources/mal.png";
 		return urlImg;
 	}
 	
@@ -47,8 +47,9 @@ public class LoginModel {
 	}
 	
 	public void goToPrincipal(AnchorPane root) {
-		root.getScene().getWindow().hide();
 		new PrincipalModel().showWindow();
+		root.getScene().getWindow().hide();
+		
 	}
 
 	public boolean isLogAcepted() {
@@ -59,6 +60,11 @@ public class LoginModel {
 		this.logAcepted = logAcepted;
 	}
 	
-	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 }
