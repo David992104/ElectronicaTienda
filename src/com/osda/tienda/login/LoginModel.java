@@ -12,12 +12,9 @@ import javafx.scene.layout.AnchorPane;
 
 public class LoginModel {
 	private boolean logAcepted;
-<<<<<<< HEAD
-	private String nombre;
-=======
+
 	public static String nombre;
->>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
-	
+
 	public String logNow(String user, String pass) throws ClassNotFoundException, SQLException {
 		String urlImg = "";
 		String result = "";
@@ -32,11 +29,7 @@ public class LoginModel {
 		if (result.equals("Bienvenido")) {
 			urlImg = "/resources/bien.png";
 			setLogAcepted(true);
-<<<<<<< HEAD
-			setNombre(user);
-=======
 			LoginModel.nombre = user; //MAndamos el user a la principal
->>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 		}else {
 			urlImg = "/resources/mal.png";
 			setLogAcepted(false);
@@ -68,14 +61,4 @@ public class LoginModel {
 		this.logAcepted = logAcepted;
 	}
 	
-<<<<<<< HEAD
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-=======
->>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
 }
