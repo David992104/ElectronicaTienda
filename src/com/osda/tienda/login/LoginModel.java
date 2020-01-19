@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import com.osda.tienda.dbconection.CRUD;
 import com.osda.tienda.dbconection.ConnectionDB;
-import com.osda.tienda.login.forgetpass.ForgetPassController;
+import com.osda.tienda.login.forgetpass.ForgetPassModel;
 import com.osda.tienda.principal.PrincipalModel;
 
 import javafx.scene.layout.AnchorPane;
@@ -43,7 +43,7 @@ public class LoginModel {
 	}
 	
 	public void goToForegetPass() {
-		new ForgetPassController().showWindow();
+		new ForgetPassModel().showWindow();
 	}
 	
 	public void goToPrincipal(AnchorPane root) {

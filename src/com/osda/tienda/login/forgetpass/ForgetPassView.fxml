@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.forgetpass.ForgetPassController">
+<AnchorPane fx:id="apRoot" prefHeight="535.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.forgetpass.ForgetPassController">
 	<children>
 		<VBox alignment="CENTER" prefHeight="500.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
@@ -53,6 +53,11 @@
 					<children>
 						<VBox alignment="TOP_RIGHT" prefHeight="126.0" prefWidth="260.0">
 							<children>
+							<JFXTextField fx:id="txtUser" labelFloat="true" promptText="Usuario">
+									<VBox.margin>
+										<Insets top="20.0" />
+									</VBox.margin>
+									</JFXTextField>
 								<JFXTextField fx:id="txtPassNew" labelFloat="true" promptText="Contraseña nueva">
 									<VBox.margin>
 										<Insets top="20.0" />

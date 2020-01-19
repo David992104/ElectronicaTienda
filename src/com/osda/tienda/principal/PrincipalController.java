@@ -53,8 +53,7 @@ public class PrincipalController implements Initializable{
 		new LoginModel();
 		lblIam.setText(LoginModel.nombre);
 		lblDate.setText(new PrincipalModel().getDate());
-		lblTime.setText(new PrincipalModel().getTime());
-		
+		lblTime.setText(new PrincipalModel().getTime());		
 	}
 	
 	
