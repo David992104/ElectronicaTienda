@@ -16,9 +16,9 @@ public class ForgetPassModel {
 		boolean resp = false;
 		if (pass.equals(passConfirm)) {
 			resp = new CRUD().changePass(user, pass);
-			Notification.showMessage("Contraseña cambiada exitosamente");
+			Notification.showMessage("Contraseï¿½a cambiada exitosamente");
 		}else {
-			Notification.showMessage("Revisa tu informacion\nContraseñas no coinciden");
+			Notification.showMessage("Revisa tu informacion\nContraseï¿½as no coinciden");
 		}			
 		return resp;
 	}
@@ -28,7 +28,7 @@ public class ForgetPassModel {
 		if ((new CRUD().findAdmin(userAdmin, passAdmin)))
 			return new CRUD().findAdmin(userAdmin, passAdmin);
 		else {
-			Notification.sendError("El usuario no existe");
+			Notification.sendError("El usuario no existe o \nNo tiene privilegios");
 			return false;
 		}
 	}

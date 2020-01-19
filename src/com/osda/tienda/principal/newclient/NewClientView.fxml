@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="apCreateUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.newclient.NewClientController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="399.0" prefWidth="570.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir Cliente">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="txtname" alignment="CENTER" labelFloat="true" promptText="Nombre">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtApe1" alignment="CENTER" labelFloat="true" promptText="Apellido 1">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtApe2" alignment="CENTER" labelFloat="true" promptText="Apellido 2">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtAdress" alignment="CENTER" labelFloat="true" promptText="Direccion">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNumber" alignment="CENTER" labelFloat="true" promptText="Telefono">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="535.0">
+               <children>
+                  <JFXButton fx:id="btnCancelar" onAction="#btnCancelarOnAction" text="Cancelar">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnClean" onAction="#btnCleanOnAction" prefHeight="25.0" prefWidth="112.0" text="Limpiar" HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="btnCreateUser" onAction="#btnCreateUserOnAction" text="Crear Usuario">
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
