@@ -11,7 +11,7 @@
  Target Server Version : 50524
  File Encoding         : 65001
 
- Date: 11/01/2020 05:40:12
+ Date: 19/01/2020 03:03:02
 */
 
 SET NAMES utf8mb4;
@@ -221,7 +221,7 @@ CREATE TABLE `usuario`  (
   PRIMARY KEY (`idUser`) USING BTREE,
   INDEX `cargo`(`idCargo`) USING BTREE,
   CONSTRAINT `cargo` FOREIGN KEY (`idCargo`) REFERENCES `cargo` (`idCargo`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of usuario
@@ -333,8 +333,9 @@ CREATE PROCEDURE `ressetPassSp`(IN usua VARCHAR(30),
 BEGIN
 	IF (SELECT usuario FROM usuario WHERE usuario = usua) = usua THEN
 		UPDATE usuario SET contrasena = passNew WHERE usuario = usua;
+		SELECT '1';
 	ELSE
-		SELECT 'fail';
+		SELECT '0';
 	END IF;
 END
 ;;
