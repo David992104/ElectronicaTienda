@@ -35,6 +35,11 @@ public class PrincipalController implements Initializable{
     private PrincipalModel principalModel = new PrincipalModel();
    
     @FXML
+   void btnAddProductOnAction (ActionEvent e) {
+	   
+   }
+    
+    @FXML
     void bpRootOnMouse(MouseEvent event) {
     	lblDate.setText(principalModel.getDate());
 		lblTime.setText(principalModel.getTime());

@@ -13,11 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<BorderPane fx:id="bpRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" onMouseEntered="#bpRootOnMouse" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.PrincipalController">
-=======
+
 <BorderPane fx:id="bpRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" onMouseMoved="#bpRootOnMouse" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.PrincipalController">
->>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
    <top>
       <Label text="Tienda" BorderPane.alignment="CENTER">
          <font>
@@ -32,11 +29,7 @@
       <JFXButton fx:id="btnCloseSesion" onAction="#btnCloseSesion" text="Cerrrar Sesion" BorderPane.alignment="BOTTOM_LEFT" />
    </bottom>
    <center>
-<<<<<<< HEAD
       <ScrollPane fx:id="panelBuys" minHeight="400.0" minWidth="500.0" prefHeight="400.0" prefWidth="540.0" BorderPane.alignment="CENTER">
-=======
-      <ScrollPane minHeight="400.0" minWidth="500.0" prefHeight="400.0" prefWidth="540.0" BorderPane.alignment="CENTER">
->>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
          <content>
             <VBox minHeight="390.0" minWidth="490.0" prefHeight="381.0" prefWidth="557.0">
                <children>
@@ -175,11 +168,8 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-<<<<<<< HEAD
-            <JFXButton fx:id="btnAddProduct" onAction="#btnAddProductOnAction" text="Anañdid Producto" />
-=======
-            <JFXButton />
->>>>>>> b6ab181715ad503677e00d2ede603bd559de84aa
+
+            <JFXButton fx:id="btnAddProduct" onAction="#btnAddProductOnAction" text="Añadir Producto" />
             <JFXButton />
             <JFXButton />
          </children>
