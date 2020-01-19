@@ -13,7 +13,7 @@ public class CRUD extends ConnectionDB {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public ResultSet loginUser(String user, String pass) throws SQLException {
 		CallableStatement call = (CallableStatement) connection.prepareCall("{CALL loginSp(?,?)}");
 		call.setString(1, user);

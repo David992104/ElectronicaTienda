@@ -56,7 +56,7 @@
    <center>
       <TabPane fx:id="tabPaneTienda" BorderPane.alignment="CENTER">
          <tabs>
-            <Tab text="Venta">
+            <Tab closable="false" text="Venta">
                <content>
                   <AnchorPane>
                      <children>
