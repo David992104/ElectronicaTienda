@@ -11,7 +11,7 @@
  Target Server Version : 50524
  File Encoding         : 65001
 
- Date: 19/01/2020 03:03:02
+ Date: 19/01/2020 22:29:34
 */
 
 SET NAMES utf8mb4;
@@ -68,18 +68,23 @@ CREATE TABLE `cliente`  (
   `ape1` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `ape2` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `direccion` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `telefono` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `telefono` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`codigoCliente`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of cliente
 -- ----------------------------
-INSERT INTO `cliente` VALUES (1, 'Pedro', 'Martinez', 'Gonzalez', 'Calpulalpan, Jilotepec', '5596467810');
-INSERT INTO `cliente` VALUES (2, 'María', 'Perez', 'Orta', 'Canalejas, Jilotepec', '7122564873');
-INSERT INTO `cliente` VALUES (3, 'Juan', 'Orozco', 'Peña', 'Huertas, Jilotepec', '5595641784');
-INSERT INTO `cliente` VALUES (4, 'Teresa', 'Rosales', 'Benitez', 'Canalejas, Jilotepec', '7124784526');
-INSERT INTO `cliente` VALUES (5, 'Gonzalo', 'Ruiz', 'Soto', 'Xhixhata, Jilotepec', '7125678493');
+INSERT INTO `cliente` VALUES (1, 'Pedro', 'Martinez', 'Gonzalez', 'Calpulalpan, Jilotepec', '5596467810', '');
+INSERT INTO `cliente` VALUES (2, 'María', 'Perez', 'Orta', 'Canalejas, Jilotepec', '7122564873', '');
+INSERT INTO `cliente` VALUES (3, 'Juan', 'Orozco', 'Peña', 'Huertas, Jilotepec', '5595641784', '');
+INSERT INTO `cliente` VALUES (4, 'Teresa', 'Rosales', 'Benitez', 'Canalejas, Jilotepec', '7124784526', '');
+INSERT INTO `cliente` VALUES (5, 'Gonzalo', 'Ruiz', 'Soto', 'Xhixhata, Jilotepec', '7125678493', '');
+INSERT INTO `cliente` VALUES (6, 'David', 'Osornio', '', 'Tepeji del Rio', '', '1');
+INSERT INTO `cliente` VALUES (7, 'David', 'Osornio', 'Sanchez', 'Tepeji del Rio', '', '1');
+INSERT INTO `cliente` VALUES (9, 'Mariel', 'Garcia', '', 'Aldama', '7122583716', '1');
+INSERT INTO `cliente` VALUES (10, 'Citlalli', 'Osornio', 'Martinez', 'Tepeji del Rio', '5567102230', '1');
 
 -- ----------------------------
 -- Table structure for compra
@@ -228,7 +233,7 @@ CREATE TABLE `usuario`  (
 -- ----------------------------
 INSERT INTO `usuario` VALUES (1, 'Mariel', 'Garcia', 'Espinoza', 'ismariel', 'alohomora', 2);
 INSERT INTO `usuario` VALUES (2, 'Kevin', 'Osornio', 'Martinez', 'kevin', 'kevin', 3);
-INSERT INTO `usuario` VALUES (3, 'David', 'Osornio', 'Sanchez', 'djos', 'qazplm10', 1);
+INSERT INTO `usuario` VALUES (3, 'David', 'Osornio', 'Sanchez', 'djos', 'qazplm', 1);
 
 -- ----------------------------
 -- Table structure for usuariocompra
@@ -267,6 +272,27 @@ BEGIN
 		INSERT INTO usuario VALUES (null, nombre, ape1, ape2, users, pass, idCargo);
 		SELECT 'good' AS Good;
 	END IF;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for createClient
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `createClient`;
+delimiter ;;
+CREATE PROCEDURE `createClient`(IN `nombre` varchar(30),
+	IN `ape1` varchar(20),
+	IN `ape2` varchar(20),
+	IN `numero` varchar(10),
+	IN `direccion` varchar(100))
+BEGIN
+	if nombre = "" or ape1 = "" or numero = "" or direccion = "" then
+		select "0" as error;
+	else
+		insert into cliente values (null, nombre, ape1, ape2, direccion, numero, "1");
+		select "1";
+	end if;
 END
 ;;
 delimiter ;

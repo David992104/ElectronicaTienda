@@ -37,7 +37,7 @@ public class NewClientModel {
 		Tab tab = new Tab();
 		tab.setText("Cliente Nuevo");
 		tab.setContent(window);
-		
+		tab.setId("1");
 		tabPane.getTabs().add(tab);
 		tabPane.getSelectionModel().select(tab);
 	}

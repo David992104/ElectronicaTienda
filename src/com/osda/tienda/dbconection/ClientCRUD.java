@@ -3,7 +3,6 @@ package com.osda.tienda.dbconection;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.CallableStatement;
-import com.osda.tienda.notification.Notification;
 
 public class ClientCRUD extends ConnectionDB{
 	public ClientCRUD(){

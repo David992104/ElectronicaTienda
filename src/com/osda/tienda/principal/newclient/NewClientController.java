@@ -38,12 +38,16 @@ public class NewClientController {
 
     @FXML
     void btnCancelarOnAction(ActionEvent event) {
-
+    	    	
     }
 
     @FXML
     void btnCleanOnAction(ActionEvent event) {
-
+    	txtname.setText(null);
+		txtApe1.setText(null);
+		txtApe2.setText(null);
+		txtNumber.setText(null);
+		txtAdress.setText(null);
     }
 
     @FXML
@@ -55,16 +59,20 @@ public class NewClientController {
     	String adress = txtAdress.getText().toString().trim();
     	
     	if (nombre.equals(""))
-    		txtAdress.requestFocus();
-    	else if (ape1.equals(""))
-    		txtNumber.requestFocus();    		
-    	else if (number.equals(""))
-    		txtApe1.requestFocus();
-    	else if (adress.equals(""))
     		txtname.requestFocus();
+    	else if (ape1.equals(""))
+    		txtApe1.requestFocus();
+    	else if (number.equals(""))
+    		txtNumber.requestFocus();    		
+    	else if (adress.equals(""))
+    		txtAdress.requestFocus();
     	else
     		if (new NewClientModel().createClient(nombre, ape1, ape2, number, adress)) {
     			txtname.setText(null);
+    			txtApe1.setText(null);
+    			txtApe2.setText(null);
+    			txtNumber.setText(null);
+    			txtAdress.setText(null);
     		}
     }
 

@@ -174,8 +174,8 @@
                                     </HBox>
                                     <HBox alignment="CENTER" prefHeight="33.0" prefWidth="557.0">
                                        <children>
-                                          <JFXButton prefHeight="25.0" prefWidth="82.0" text="Cancelar" />
-                                          <JFXButton text="Proceder">
+                                          <JFXButton prefHeight="25.0" prefWidth="82.0" text="Cancelar" fx:id="btnCancelar"/>
+                                          <JFXButton text="Proceder" fx:id="btnProceder">
                                              <HBox.margin>
                                                 <Insets left="380.0" />
                                              </HBox.margin>
