@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 import java.util.ResourceBundle;
@@ -18,6 +17,7 @@ import java.util.ResourceBundle;
 import com.osda.tienda.login.LoginModel;
 import com.osda.tienda.principal.addProducto.AddProdModel;
 import com.osda.tienda.principal.newclient.NewClientModel;
+import com.osda.tienda.principal.sell.SellModel;
 
 public class PrincipalController implements Initializable{
     @FXML
@@ -28,21 +28,22 @@ public class PrincipalController implements Initializable{
     private JFXButton btnCloseSesion;
 
     @FXML
-    private Label lblDate;
-
-    @FXML
-    private Label lblTime;
-
-    @FXML
     private Label lblIam;
     @FXML
     private JFXButton btnAddProduct;
+    @FXML
+    private JFXButton btnAddProvedor;
 
     @FXML
     private TabPane tabPaneTienda;
     
     private PrincipalModel principalModel = new PrincipalModel();
    
+    @FXML
+    void btnAddProvedorOnAction(ActionEvent event) {
+    	
+    }
+    
     @FXML
     void btnNewClientOnAction (ActionEvent e) {
     	new NewClientModel().showWindow(tabPaneTienda);
@@ -53,17 +54,10 @@ public class PrincipalController implements Initializable{
 	   new AddProdModel().showWindow(tabPaneTienda);
     }
     
-    @FXML
-    void bpRootOnMouse(MouseEvent event) {
-    	lblDate.setText(principalModel.getDate());
-		lblTime.setText(principalModel.getTime());
-
-    }
-    
+  
     @FXML
     void btnCloseSesion(ActionEvent event) {
     	try {
-
     		principalModel.closeSesion(bpRoot);
 
 		} catch (IOException e) {
@@ -75,8 +69,7 @@ public class PrincipalController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		new LoginModel();
-		lblIam.setText(LoginModel.nombre);
-		lblDate.setText(new PrincipalModel().getDate());
-		lblTime.setText(new PrincipalModel().getTime());	
+		lblIam.setText(LoginModel.nombre);	
+		new SellModel().showWindow(tabPaneTienda);
 	}
 }

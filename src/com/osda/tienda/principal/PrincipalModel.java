@@ -2,9 +2,6 @@ package com.osda.tienda.principal;
 
 import java.io.IOException;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,8 +10,7 @@ import javafx.stage.Stage;
 
 public class PrincipalModel {
 	
-	public void closeSesion(BorderPane principal) throws IOException {
-	
+	public void closeSesion(BorderPane principal) throws IOException {	
 		principal.getScene().getWindow().hide();
 		
 		Parent log = FXMLLoader.load(getClass().getResource("/com/osda/tienda/login/LoginView.fxml"));
@@ -42,20 +38,6 @@ public class PrincipalModel {
 	}
 	
 	
-	public String getDate() {
-		Calendar calendar = new GregorianCalendar();
-		return calendar.get(Calendar.DAY_OF_MONTH) + " de " +
-				(calendar.get(Calendar.MONTH ) + 1) + " del " + 
-				calendar.get(Calendar.YEAR);
-	}
 	
-	public String getTime() {
-		Calendar calendario = new GregorianCalendar();
-		
-		return calendario.get(Calendar.HOUR_OF_DAY) + ":" +
-				calendario.get(Calendar.MINUTE)+":"+
-				calendario.get(Calendar.SECOND);
-	}
-
 	
 }

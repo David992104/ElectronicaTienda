@@ -1,8 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane fx:id="apVenta" onMouseMoved="#apVentaOnMouseMoved" prefHeight="400.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.sell.SellController">
+   <children>
+      <VBox minHeight="400.0" minWidth="570.0" prefHeight="400.0" prefWidth="570.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" minHeight="21.0" minWidth="490.0" prefHeight="21.0" prefWidth="557.0">
+               <children>
+                  <Label text="Hoy es: ">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="lblDate" text="fecha">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="y son las: ">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="lblTime" text="hora">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <VBox prefHeight="98.0" prefWidth="557.0">
+               <children>
+                  <HBox prefHeight="42.0" prefWidth="557.0">
+                     <children>
+                        <JFXTextField fx:id="txtCodigo" labelFloat="true" minHeight="25.0" minWidth="90.0" prefHeight="25.0" prefWidth="50.0" promptText="Codigo">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtProducto" labelFloat="true" prefHeight="25.0" prefWidth="200.0" promptText="Producto">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtDisponibles" editable="false" labelFloat="true" minHeight="25.0" minWidth="70.0" prefHeight="25.0" prefWidth="25.0" promptText="Disponibles">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtPrecio" editable="false" labelFloat="true" promptText="Precio">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtCantidad" labelFloat="true" promptText="Cantidad">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="txtSubtotal" editable="false" labelFloat="true" promptText="Subtotal">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="26.0" prefWidth="557.0">
+                     <children>
+                        <JFXButton fx:id="btnVaciar" onAction="#btnVaciarOnAction" text="Vaciar" />
+                        <JFXButton fx:id="btnAnadir" onAction="#btnAnadirOnAction" text="Añadir">
+                           <HBox.margin>
+                              <Insets left="420.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <TableView prefHeight="312.0" prefWidth="557.0">
+               <columns>
+                  <TableColumn prefWidth="29.0" />
+                  <TableColumn fx:id="tabCodigo" prefWidth="114.0" text="codigo" />
+                  <TableColumn fx:id="tabProducto" prefWidth="157.0" text="Producto" />
+                  <TableColumn fx:id="tabPrecio" text="Precio" />
+                  <TableColumn fx:id="tabCantidad" prefWidth="76.0" text="Cantidad" />
+                  <TableColumn fx:id="tabSubtotal" prefWidth="100.0" text="Subtotal" />
+               </columns>
+            </TableView>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" minHeight="35.0" prefHeight="35.0" prefWidth="557.0">
+                     <children>
+                        <Label text="Total $  ">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="lblTotal" text="Total">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="33.0" prefWidth="557.0">
+                     <children>
+                        <JFXButton fx:id="btnCancelar" onAction="#btnCancelarOnAction" prefHeight="25.0" prefWidth="82.0" text="Cancelar" />
+                        <JFXButton fx:id="btnProceder" onAction="#btnProcederOnAction" text="Proceder">
+                           <HBox.margin>
+                              <Insets left="380.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
-

@@ -15,13 +15,15 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 
 public class AddProdModel {
-	
-	public void llenarTabla(ObservableList<ProductoCRUD> lista){
-		lista = new ProductoCRUD().getProductos();
+
+	public ObservableList<Producto> llenarTabla() throws SQLException {
+		return new ProductoCRUD().getProductos();
 	}
 	
+
 	public boolean addProduct(String codigoB, String descripccion, double precio, int existencias)
 			throws ClassNotFoundException, SQLException {
+		
 		String result = "";
 
 		ConnectionDB.getConnection();
@@ -38,26 +40,26 @@ public class AddProdModel {
 			Notification.sendError("El producto ya existe");
 			return false;
 		} else {
-			Notification.showMessage("El producto " + descripccion + " fue añadido");
+			Notification.showMessage("El producto " + descripccion + " fue aï¿½adido");
 			return true;
 
 		}
 	}
-	
+
 	public void showWindow(TabPane tabPane) {
-		FXMLLoader loader= new FXMLLoader(getClass()
-				.getResource("/com/osda/tienda/principal/addProducto/addProdView.fxml"));
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/com/osda/tienda/principal/addProducto/AddProdView.fxml"));
 		AnchorPane window = null;
 		try {
 			window = loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Tab tab = new Tab();
-		tab.setText("Añadir PRoducto");
+		tab.setText("AÃ±adir Producto");
 		tab.setContent(window);
-		
+		tab.setClosable(true);
 		tabPane.getTabs().add(tab);
 		tabPane.getSelectionModel().select(tab);
 	}
