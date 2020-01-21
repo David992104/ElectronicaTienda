@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.osda.tienda.notification.Notification;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,7 +51,7 @@ public class AddProdController implements Initializable {
 	@FXML
 	private Button btnVolver;
 
-	private ObservableList<Producto> lista;
+	private ObservableList<Producto> lista = FXCollections.observableArrayList();
 
 	private AddProdModel addProdModel = new AddProdModel();
 
@@ -90,7 +91,10 @@ public class AddProdController implements Initializable {
 
 	@FXML
 	void OnAccionbtnVolver(ActionEvent event) {
-
+		txtCodigoB.setText("");
+		txtDescripccion.setText("");
+		txtPrecio.setText("");
+		txtExistencias.setText("");
 	}
 
 	@Override
@@ -104,12 +108,14 @@ public class AddProdController implements Initializable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		tableProd.setItems(lista);
+		
 
-		tabCodigo.setCellValueFactory(new PropertyValueFactory<Producto, String>("codigo"));
-		tabDescripcion.setCellValueFactory(new PropertyValueFactory<Producto, String>("descripcion"));
-		tabPrecio.setCellValueFactory(new PropertyValueFactory<Producto, Double>("precio"));
-		tabExistencias.setCellValueFactory(new PropertyValueFactory<Producto, Number>("existencias"));
+		tabCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+		tabDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+		tabPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+		tabExistencias.setCellValueFactory(new PropertyValueFactory<>("existencias"));
+		
+		tableProd.setItems(lista);
 	}
 
 }

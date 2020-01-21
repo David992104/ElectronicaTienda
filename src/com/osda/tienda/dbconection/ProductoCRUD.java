@@ -21,26 +21,37 @@ public class ProductoCRUD extends ConnectionDB {
 		}
 	}
 	
+	public void commit() {
+		try {
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void rollback() {
+		try {
+			connection.rollback();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public ObservableList<Producto> getProductos() throws SQLException {
-		 CallableStatement call = null;
-		 ResultSet result = null;
-		 ObservableList<Producto> listaProducto =  FXCollections.observableArrayList();
-		
-		call = (CallableStatement) connection.prepareCall("{CALL getProduct()}");
+		ResultSet result = null;
+		ObservableList<Producto> listaProducto = FXCollections.observableArrayList();
+
+		CallableStatement call = (CallableStatement) connection.prepareCall("{CALL getProduct()}");
 		call.execute();
-		result = call.getResultSet();		
-		
+		result = call.getResultSet();
+
 		while (result.next()) {
-			listaProducto.add(
-				new Producto(
-						result.getString(1),
-						result.getString(2),
-						result.getDouble(3),
-						result.getInt(4)
-				)	
-			);				
-		}				
-		
+			listaProducto
+					.add(new Producto(result.getString(1), result.getString(2), result.getDouble(3), result.getInt(4)));
+
+		}
+
 		closeConnection();
 		return listaProducto;
 	}
@@ -55,7 +66,7 @@ public class ProductoCRUD extends ConnectionDB {
 		call.setInt(4, existencias);
 		call.execute();
 		result = call.getResultSet();
-		
+
 		return result;
 
 	}

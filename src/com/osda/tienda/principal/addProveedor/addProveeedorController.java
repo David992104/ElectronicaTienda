@@ -1,17 +1,21 @@
 package com.osda.tienda.principal.addProveedor;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-import com.osda.tienda.principal.addProducto.AddProdModel;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class addProveeedorController {
+public class addProveeedorController implements Initializable{
 
 	@FXML
 	private TextField txtRazonS;
@@ -32,26 +36,28 @@ public class addProveeedorController {
 	private Button btnAniadir;
 
 	@FXML
-	private TableView<?> tblProveedor;
+	private TableView<Proveedor> tblProveedor;
 
 	@FXML
-	private TableColumn<?, ?> columnRsocial;
+	private TableColumn<Proveedor, String> columnRsocial;
 
 	@FXML
-	private TableColumn<?, ?> columnRfc;
+	private TableColumn<Proveedor, String> columnRfc;
 
 	@FXML
-	private TableColumn<?, ?> columnCorreo;
+	private TableColumn<Proveedor, String> columnCorreo;
 
 	@FXML
-	private TableColumn<?, ?> columnDireccion;
+	private TableColumn<Proveedor, String> columnDireccion;
 
 	@FXML
-	private TableColumn<?, ?> columnTelefono;
+	private TableColumn<Proveedor, String> columnTelefono;
+	
+	private ObservableList<Proveedor> lista = FXCollections.observableArrayList();
 
 	@FXML
 	void OnActionbtnAniadir(ActionEvent event) {
-		try {
+		
 			if (new addProveedorModel().addProvedor(txtRazonS.getText().toString().trim(),
 					txtRfc.getText().toString().trim(), txtCorreo.getText().toString().trim(),
 					txtDireccion.getText().toString().trim(), txtTelefono.getText().toString().trim())) {
@@ -62,11 +68,24 @@ public class addProveeedorController {
 				txtTelefono.setText("");
 				
 			}
-
-		} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			llenar();
+		
 	}
 
+	public void llenar() {
+		lista = new addProveedorModel().llenarTabla();
+		
+		columnRsocial.setCellValueFactory(new PropertyValueFactory<>("razon"));
+		columnRfc.setCellValueFactory(new PropertyValueFactory<>("rfc"));
+		columnCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
+		columnDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+		columnTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+		
+		tblProveedor.setItems(lista);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		llenar();
+	}
 }

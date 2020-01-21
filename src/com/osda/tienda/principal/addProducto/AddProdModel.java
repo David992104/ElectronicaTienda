@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import com.osda.tienda.dbconection.ConnectionDB;
 import com.osda.tienda.dbconection.ProductoCRUD;
 import com.osda.tienda.notification.Notification;
@@ -19,11 +21,10 @@ public class AddProdModel {
 	public ObservableList<Producto> llenarTabla() throws SQLException {
 		return new ProductoCRUD().getProductos();
 	}
-	
 
 	public boolean addProduct(String codigoB, String descripccion, double precio, int existencias)
 			throws ClassNotFoundException, SQLException {
-		
+
 		String result = "";
 
 		ConnectionDB.getConnection();
@@ -40,9 +41,15 @@ public class AddProdModel {
 			Notification.sendError("El producto ya existe");
 			return false;
 		} else {
-			Notification.showMessage("El producto " + descripccion + " fue aï¿½adido");
-			return true;
-
+			if ((JOptionPane.showConfirmDialog(null, "Confirmar producto") == 0)) {
+				Notification.showMessage("El producto " + descripccion + " fue añadido");
+				new ProductoCRUD().commit();
+				return true;				
+			}else {
+				Notification.showMessage("El producto " + descripccion + " no fue añadido");
+				new ProductoCRUD().rollback();
+				return false;				
+			}
 		}
 	}
 
@@ -57,7 +64,7 @@ public class AddProdModel {
 		}
 
 		Tab tab = new Tab();
-		tab.setText("AÃ±adir Producto");
+		tab.setText("Añadir Producto");
 		tab.setContent(window);
 		tab.setClosable(true);
 		tabPane.getTabs().add(tab);

@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 import com.osda.tienda.login.LoginModel;
 import com.osda.tienda.principal.addProducto.AddProdModel;
+import com.osda.tienda.principal.addProveedor.addProveedorModel;
 import com.osda.tienda.principal.newclient.NewClientModel;
 import com.osda.tienda.principal.sell.SellModel;
 
@@ -41,7 +42,7 @@ public class PrincipalController implements Initializable{
    
     @FXML
     void btnAddProvedorOnAction(ActionEvent event) {
-    	
+    	new addProveedorModel().showWindow(tabPaneTienda);
     }
     
     @FXML

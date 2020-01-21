@@ -28,6 +28,7 @@ public class ConnectionDB {
 				}
 			}
 		}
+		connection.setAutoCommit(false);
 		return connection;
 	}
 

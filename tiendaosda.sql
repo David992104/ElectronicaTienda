@@ -11,7 +11,7 @@
  Target Server Version : 50524
  File Encoding         : 65001
 
- Date: 20/01/2020 12:34:23
+ Date: 21/01/2020 03:25:16
 */
 
 SET NAMES utf8mb4;
@@ -153,6 +153,8 @@ CREATE TABLE `producto`  (
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
+INSERT INTO `producto` VALUES ('123', 'Pruebas', 12345.00, 4);
+INSERT INTO `producto` VALUES ('12345', 'iPhone', 2000.00, 2);
 INSERT INTO `producto` VALUES ('2', 'prueba', 123.00, 3);
 INSERT INTO `producto` VALUES ('808080', 'Pruab', 120.00, 3);
 INSERT INTO `producto` VALUES ('8500402', 'Mouse inalámbrico HP color rojo', 300.00, 3);
@@ -175,7 +177,7 @@ CREATE TABLE `provedor`  (
   `direccion` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `telefono` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`codigoProvedor`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of provedor
@@ -183,6 +185,7 @@ CREATE TABLE `provedor`  (
 INSERT INTO `provedor` VALUES (1, 'Accesorios Lucas SA de CV', 'ACLU150625', 'accesorios.lucas@gmail.com', 'CDMX delegación Cuauthemoc No. 12', '55648783');
 INSERT INTO `provedor` VALUES (2, 'Todo Informatica SA de CV', 'INTO101106', 'todo.informatica@gmail.com', 'Tequila Jalisco No. 3 Colonia Centro', '33064578');
 INSERT INTO `provedor` VALUES (3, 'Accesorios y Sistemas Informaticos SA de CV', 'SIAS130429', 'sistemas.informaticos@hotmail.', 'Juriquilla no. 20 Colonia Carrizales, Qro.', '422784569');
+INSERT INTO `provedor` VALUES (11, 'OSDA', 'OSDA2121', 'osda@osda.com', 'Tepeji del Rios', '5567102230');
 
 -- ----------------------------
 -- Table structure for proveedorproducto
@@ -424,6 +427,18 @@ delimiter ;;
 CREATE PROCEDURE `getProduct`()
 BEGIN
 	SELECT * FROM producto;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getProveedor
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getProveedor`;
+delimiter ;;
+CREATE PROCEDURE `getProveedor`()
+BEGIN
+	SELECT * FROM provedor;
 END
 ;;
 delimiter ;

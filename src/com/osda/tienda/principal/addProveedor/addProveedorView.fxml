@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.osda.tienda.addProveedor.addProveeedorController">
+<AnchorPane prefHeight="400.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.addProveedor.addProveeedorController">
    <children>
       <BorderPane prefHeight="433.0" prefWidth="570.0">
          <top>
@@ -20,6 +20,9 @@
                <padding>
                   <Insets top="20.0" />
                </padding>
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
             </Label>
          </top>
          <center>
@@ -101,25 +104,15 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="200.0" prefWidth="400.0">
-                     <children>
-                        <TableView fx:id="tblProveedor" prefHeight="200.0" prefWidth="414.0">
-                          <columns>
-                            <TableColumn fx:id="columnRsocial" prefWidth="75.0" text="Razon S" />
-                            <TableColumn fx:id="columnRfc" prefWidth="51.0" text="RFC" />
-                              <TableColumn fx:id="columnCorreo" prefWidth="90.0" text="E-mail" />
-                              <TableColumn fx:id="columnDireccion" prefWidth="102.0" text="Direccion" />
-                              <TableColumn fx:id="columnTelefono" prefWidth="95.0" text="telefono" />
-                          </columns>
-                           <HBox.margin>
-                              <Insets left="80.0" right="5.0" />
-                           </HBox.margin>
-                        </TableView>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
+                  <TableView fx:id="tblProveedor" prefHeight="200.0" prefWidth="469.0">
+                    <columns>
+                      <TableColumn fx:id="columnRsocial" prefWidth="75.0" text="Razon S" />
+                      <TableColumn fx:id="columnRfc" prefWidth="51.0" text="RFC" />
+                        <TableColumn fx:id="columnCorreo" prefWidth="90.0" text="E-mail" />
+                        <TableColumn fx:id="columnDireccion" prefWidth="102.0" text="Direccion" />
+                        <TableColumn fx:id="columnTelefono" prefWidth="95.0" text="telefono" />
+                    </columns>
+                  </TableView>
                </children>
                <BorderPane.margin>
                   <Insets />

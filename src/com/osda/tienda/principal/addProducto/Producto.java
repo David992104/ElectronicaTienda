@@ -1,52 +1,47 @@
 package com.osda.tienda.principal.addProducto;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Producto {
-	private StringProperty codigo;
-	private StringProperty descripcion;
-	private SimpleDoubleProperty precio;
-	private SimpleIntegerProperty existencias;
+	private String codigo;
+	private String descripcion;
+	private double precio;
+	private int existencias;
 	
 	public Producto(String codigo, String descripcion, double precio, int existencias) {
-		this.codigo = new SimpleStringProperty(codigo);
-		this.descripcion = new SimpleStringProperty(descripcion);
-		this.precio = new SimpleDoubleProperty(precio);
-		this.existencias = new SimpleIntegerProperty(existencias);
+		this.codigo = codigo;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		this.existencias = existencias;
 	}
 
-	public StringProperty getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(SimpleStringProperty codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
-	public StringProperty getDescripcion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public void setDescripcion(SimpleStringProperty descripcion) {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public SimpleDoubleProperty getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(SimpleDoubleProperty precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
-	public SimpleIntegerProperty getExistencias() {
+	public int getExistencias() {
 		return existencias;
 	}
 
-	public void setExistencias(SimpleIntegerProperty existencias) {
+	public void setExistencias(int existencias) {
 		this.existencias = existencias;
 	}
 	
