@@ -16,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 import java.util.ResourceBundle;
 
 import com.osda.tienda.login.LoginModel;
+import com.osda.tienda.principal.addProducto.AddProdModel;
 import com.osda.tienda.principal.newclient.NewClientModel;
 
 public class PrincipalController implements Initializable{
@@ -49,7 +50,7 @@ public class PrincipalController implements Initializable{
     
     @FXML
     void btnAddProductOnAction (ActionEvent e) {
-	   
+	   new AddProdModel().showWindow(tabPaneTienda);
     }
     
     @FXML

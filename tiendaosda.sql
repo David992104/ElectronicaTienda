@@ -11,7 +11,7 @@
  Target Server Version : 50524
  File Encoding         : 65001
 
- Date: 19/01/2020 22:29:34
+ Date: 20/01/2020 12:34:23
 */
 
 SET NAMES utf8mb4;
@@ -153,6 +153,8 @@ CREATE TABLE `producto`  (
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
+INSERT INTO `producto` VALUES ('2', 'prueba', 123.00, 3);
+INSERT INTO `producto` VALUES ('808080', 'Pruab', 120.00, 3);
 INSERT INTO `producto` VALUES ('8500402', 'Mouse inalámbrico HP color rojo', 300.00, 3);
 INSERT INTO `producto` VALUES ('8500403', 'Teclado Gamer Asus RGB', 600.00, 2);
 INSERT INTO `producto` VALUES ('8500404', 'Pen Drive Kingston 32GB', 220.00, 24);
@@ -251,6 +253,66 @@ CREATE TABLE `usuariocompra`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Procedure structure for addProductoSp
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `addProductoSp`;
+delimiter ;;
+CREATE PROCEDURE `addProductoSp`(IN codigo VARCHAR(8),
+IN producto VARCHAR(100),
+IN precio FLOAT(7.2),
+IN existencias INT(5))
+BEGIN 
+DECLARE codigoBD VARCHAR(8);
+DECLARE productoBD VARCHAR(50);
+SET codigoBD = '';
+SET productoBD = '';
+SELECT codigobarras INTO codigoBD FROM producto WHERE codigobarras = codigo;
+SELECT descripcion INTO productoBD FROM producto WHERE descripcion = producto;
+If existencias < 0 or precio <= 0 THEN
+	SELECT 'Error' As Errorsito;
+ELSE
+	IF codigoBD = codigo OR productoBD = producto THEN
+		SELECT 'prodExistente' AS Error;
+	ELSE
+		INSERT INTO producto VALUES (codigo, producto, precio, existencias);
+		SELECT 'Aniadido' AS Exito;
+	END IF;
+END IF;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for addProvedorSp
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `addProvedorSp`;
+delimiter ;;
+CREATE PROCEDURE `addProvedorSp`(IN rsocial VARCHAR(50),
+IN rfcA VARCHAR(30),
+IN correo VARCHAR(30),
+IN direcccion VARCHAR(100),
+IN telefon VARCHAR(10))
+BEGIN 
+	DECLARE rfcN VARCHAR(30);
+	DECLARE telefonoN VARCHAR(10);
+
+	SET rfcN = '';
+	SET telefonoN = '';
+
+	SELECT rfc INTO rfcN FROM provedor WHERE rfc = rfcA;
+	SELECT provedor.telefono INTO telefonoN FROM provedor WHERE provedor.telefono = telefon;
+
+	IF rfcN = rfcA OR telefonoN = telefon THEN
+		SELECT 'proveedorExistente' AS Error;
+	ELSE
+		INSERT INTO provedor VALUES (null, rsocial, rfcA, correo, direcccion, telefon);
+		SELECT 'Aniadido' AS Exito;
+	END IF;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for addUserSp
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `addUserSp`;
@@ -298,6 +360,38 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for editClient
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `editClient`;
+delimiter ;;
+CREATE PROCEDURE `editClient`(IN id INT(2),
+	IN nombreA VARCHAR(30),
+	IN ape1A VARCHAR(20),
+	IN ape2A VARCHAR(20),
+	IN direccionA VARCHAR(100),
+	IN telefonoA VARCHAR(10),
+	IN estadoA CHAR)
+BEGIN
+
+	
+	IF (SELECT codigoCliente FROM cliente WHERE codigoCliente = id) = id THEN
+		UPDATE cliente SET
+			nombre = nombreA,
+			ape1 = ape1A,
+			ape2 = ape2A,
+			direccion = direccionA,
+			telefono = telefonoA,
+			`status` = estadoA
+		WHERE codigoCliente = id ;
+		SELECT "1";
+	else
+		select  "0";
+	end if;		
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for findAdminSp
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `findAdminSp`;
@@ -318,6 +412,18 @@ BEGIN
 		SELECT '0';
 	END IF;
 
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for getProduct
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getProduct`;
+delimiter ;;
+CREATE PROCEDURE `getProduct`()
+BEGIN
+	SELECT * FROM producto;
 END
 ;;
 delimiter ;

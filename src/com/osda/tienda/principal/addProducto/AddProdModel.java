@@ -1,0 +1,64 @@
+package com.osda.tienda.principal.addProducto;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.osda.tienda.dbconection.ConnectionDB;
+import com.osda.tienda.dbconection.ProductoCRUD;
+import com.osda.tienda.notification.Notification;
+
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.AnchorPane;
+
+public class AddProdModel {
+	
+	public void llenarTabla(ObservableList<ProductoCRUD> lista){
+		lista = new ProductoCRUD().getProductos();
+	}
+	
+	public boolean addProduct(String codigoB, String descripccion, double precio, int existencias)
+			throws ClassNotFoundException, SQLException {
+		String result = "";
+
+		ConnectionDB.getConnection();
+		ResultSet prodMessage = new ProductoCRUD().addProducto(codigoB, descripccion, precio, existencias);
+		while (prodMessage.next()) {
+			result = prodMessage.getString(1);
+		}
+		ConnectionDB.closeConnection();
+
+		if (result.equals("Error")) {
+			System.out.println("El precio y la Existencia no puede ser menor a cero");
+		}
+		if (result.equals("prodExistente")) {
+			Notification.sendError("El producto ya existe");
+			return false;
+		} else {
+			Notification.showMessage("El producto " + descripccion + " fue añadido");
+			return true;
+
+		}
+	}
+	
+	public void showWindow(TabPane tabPane) {
+		FXMLLoader loader= new FXMLLoader(getClass()
+				.getResource("/com/osda/tienda/principal/addProducto/addProdView.fxml"));
+		AnchorPane window = null;
+		try {
+			window = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Tab tab = new Tab();
+		tab.setText("Añadir PRoducto");
+		tab.setContent(window);
+		
+		tabPane.getTabs().add(tab);
+		tabPane.getSelectionModel().select(tab);
+	}
+}
