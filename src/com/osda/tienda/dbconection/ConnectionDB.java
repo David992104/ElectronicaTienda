@@ -11,6 +11,28 @@ public class ConnectionDB {
 	public Statement statement;
 	public static Connection connection;
 
+	public void commit() {
+		try {
+			connection.setAutoCommit(false);
+			connection.commit();
+			//closeConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void rollback() {
+		try {
+			connection.rollback();
+			connection.setAutoCommit(true);
+			//closeConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 		if (connection == null) {
 			
@@ -28,7 +50,7 @@ public class ConnectionDB {
 				}
 			}
 		}
-		connection.setAutoCommit(false);
+		
 		return connection;
 	}
 

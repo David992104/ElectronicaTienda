@@ -11,93 +11,113 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400" prefWidth="570" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.addProducto.AddProdController">
-   <children>
-      <BorderPane prefHeight="400.0" prefWidth="570.0">
-         <top>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir producto" BorderPane.alignment="CENTER" />
-         </top>
-         <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox prefHeight="39.0" prefWidth="483.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo de Barras">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion" wrappingWidth="197.728515625">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precio">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Excistencias">
-                           <HBox.margin>
-                              <Insets left="30.0" />
-                           </HBox.margin>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="40.0" prefWidth="483.0">
-                     <children>
-                        <TextField fx:id="txtCodigoB" prefHeight="25.0" prefWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField fx:id="txtDescripccion" prefHeight="25.0" prefWidth="189.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField fx:id="txtPrecio" prefHeight="25.0" prefWidth="59.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <TextField fx:id="txtExistencias" prefHeight="14.0" prefWidth="71.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Button fx:id="btnAniadir" mnemonicParsing="false" onAction="#OnAccionAniadir" text="Añadir">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <TableView fx:id="tableProd" prefHeight="236.0" prefWidth="550.0">
-                    <columns>
-                      <TableColumn fx:id="tabCodigo" prefWidth="88.0" text="Codigo B" />
-                      <TableColumn fx:id="tabDescripcion" prefWidth="220.0" text="Desrcipccion" />
-                        <TableColumn fx:id="tabPrecio" minWidth="3.0" prefWidth="128.0" text="Precio" />
-                        <TableColumn fx:id="tabExistencias" prefWidth="113.0" text="Existencias" />
-                    </columns>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </TableView>
-               </children>
-            </VBox>
-         </center>
-         <bottom>
-            <HBox prefHeight="62.0" prefWidth="538.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#OnAccionbtnVolver" text="Volver">
-                     <HBox.margin>
-                        <Insets left="20.0" top="30.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </bottom>
-      </BorderPane>
-   </children>
+<AnchorPane prefHeight="400" prefWidth="570"
+	xmlns="http://javafx.com/javafx/11.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.osda.tienda.principal.addProducto.AddProdController">
+	<children>
+		<BorderPane prefHeight="400.0" prefWidth="570.0">
+			<top>
+				<Text strokeType="OUTSIDE" strokeWidth="0.0"
+					text="Añadir producto" BorderPane.alignment="CENTER" />
+			</top>
+			<center>
+				<VBox prefHeight="200.0" prefWidth="100.0"
+					BorderPane.alignment="CENTER">
+					<children>
+						<HBox prefHeight="39.0" prefWidth="483.0">
+							<children>
+								<Text strokeType="OUTSIDE" strokeWidth="0.0"
+									text="Codigo de Barras">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</Text>
+								<Text strokeType="OUTSIDE" strokeWidth="0.0"
+									text="Descripcion" wrappingWidth="197.728515625">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</Text>
+								<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precio">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</Text>
+								<Text strokeType="OUTSIDE" strokeWidth="0.0"
+									text="Excistencias">
+									<HBox.margin>
+										<Insets left="30.0" />
+									</HBox.margin>
+								</Text>
+							</children>
+						</HBox>
+						<HBox prefHeight="40.0" prefWidth="483.0">
+							<children>
+								<TextField fx:id="txtCodigoB" prefHeight="25.0"
+									prefWidth="100.0">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</TextField>
+								<TextField fx:id="txtDescripccion" prefHeight="25.0"
+									prefWidth="189.0">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</TextField>
+								<TextField fx:id="txtPrecio" prefHeight="25.0"
+									prefWidth="59.0">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</TextField>
+								<TextField fx:id="txtExistencias" prefHeight="14.0"
+									prefWidth="71.0">
+									<HBox.margin>
+										<Insets left="10.0" />
+									</HBox.margin>
+								</TextField>
+								<Button fx:id="btnAniadir" mnemonicParsing="false"
+									onAction="#OnAccionAniadir" text="Añadir">
+									<HBox.margin>
+										<Insets left="15.0" />
+									</HBox.margin>
+								</Button>
+							</children>
+						</HBox>
+						<TableView fx:id="tableProd" prefHeight="236.0"
+							prefWidth="550.0">
+							<columns>
+								<TableColumn fx:id="tabCodigo" prefWidth="88.0"
+									text="Codigo B" />
+								<TableColumn fx:id="tabDescripcion"
+									prefWidth="220.0" text="Desrcipccion" />
+								<TableColumn fx:id="tabPrecio" minWidth="3.0"
+									prefWidth="128.0" text="Precio" />
+								<TableColumn fx:id="tabExistencias"
+									prefWidth="113.0" text="Existencias" />
+							</columns>
+							<VBox.margin>
+								<Insets left="10.0" right="10.0" />
+							</VBox.margin>
+						</TableView>
+					</children>
+				</VBox>
+			</center>
+			<bottom>
+				<HBox prefHeight="62.0" prefWidth="538.0"
+					BorderPane.alignment="CENTER">
+					<children>
+						<Button fx:id="btnVolver" mnemonicParsing="false"
+							onAction="#OnAccionbtnVolver" text="Volver">
+							<HBox.margin>
+								<Insets left="20.0" top="30.0" />
+							</HBox.margin>
+						</Button>
+					</children>
+				</HBox>
+			</bottom>
+		</BorderPane>
+	</children>
 </AnchorPane>

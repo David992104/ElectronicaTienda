@@ -48,12 +48,12 @@
                <children>
                   <HBox prefHeight="42.0" prefWidth="557.0">
                      <children>
-                        <JFXTextField fx:id="txtCodigo" labelFloat="true" minHeight="25.0" minWidth="90.0" prefHeight="25.0" prefWidth="50.0" promptText="Codigo">
+                        <JFXTextField fx:id="txtCodigo" labelFloat="true" minHeight="25.0" minWidth="90.0" onKeyTyped="#txtCodigoOnKeyTyped" prefHeight="25.0" prefWidth="50.0" promptText="Codigo">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txtProducto" labelFloat="true" prefHeight="25.0" prefWidth="200.0" promptText="Producto">
+                        <JFXTextField fx:id="txtProducto" labelFloat="true" onKeyTyped="#txtProductoOnKeyTyped" prefHeight="25.0" prefWidth="200.0" promptText="Producto">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -68,12 +68,12 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txtCantidad" labelFloat="true" promptText="Cantidad">
+                        <JFXTextField fx:id="txtCantidad" labelFloat="true" onKeyTyped="#txtCantidadOnKreyTyped" promptText="Cantidad">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="txtSubtotal" editable="false" labelFloat="true" promptText="Subtotal">
+                        <JFXTextField fx:id="txtSubtotal" editable="false" labelFloat="true" onAction="#txtSubtotalOnAction" promptText="Subtotal">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -86,9 +86,14 @@
                   <HBox prefHeight="26.0" prefWidth="557.0">
                      <children>
                         <JFXButton fx:id="btnVaciar" onAction="#btnVaciarOnAction" text="Vaciar" />
+                        <JFXButton fx:id="txtBuscar" onAction="#txtBuscarOnAction" text="Buscar">
+                           <HBox.margin>
+                              <Insets left="300.0" />
+                           </HBox.margin>
+                        </JFXButton>
                         <JFXButton fx:id="btnAnadir" onAction="#btnAnadirOnAction" text="Añadir">
                            <HBox.margin>
-                              <Insets left="420.0" />
+                              <Insets left="70.0" />
                            </HBox.margin>
                         </JFXButton>
                      </children>
@@ -100,7 +105,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Separator>
-            <TableView prefHeight="312.0" prefWidth="557.0">
+            <TableView fx:id="tableSell" prefHeight="312.0" prefWidth="557.0">
                <columns>
                   <TableColumn prefWidth="29.0" />
                   <TableColumn fx:id="tabCodigo" prefWidth="114.0" text="codigo" />

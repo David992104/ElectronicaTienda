@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vbRoot" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.sell.confirm.ConfirmSellController">
+   <children>
+      <Label text="Confirmar Venta">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <Separator prefWidth="200.0">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </Separator>
+      <Label text="Usuario" />
+      <JFXTextField fx:id="txtId" labelFloat="true" onKeyTyped="#txtIdOnKeyTyped" promptText="Codigo cliente" />
+      <JFXTextField fx:id="txtNombre" labelFloat="true" promptText="Nombre">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="txtApe1" labelFloat="true" promptText="Primer Apellido">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="txtApe2" labelFloat="true" text="Segundo Apellido">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="txtDireccion" labelFloat="true" promptText="Direccion">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <Separator prefWidth="200.0">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </Separator>
+      <Label text="Ticket" />
+      <JFXTextField fx:id="txtNumArticulos" labelFloat="true" promptText="Numero de articulos">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <JFXTextField fx:id="txtTotal" labelFloat="true" promptText="Total">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <Separator prefWidth="200.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </Separator>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <JFXButton fx:id="btnCancelar" onAction="#btnCancelarOnAction" text="Cancelar">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnAceptar" onAction="#btnAceptarOnAction" text="Aceptar">
+               <HBox.margin>
+                  <Insets left="100.0" top="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

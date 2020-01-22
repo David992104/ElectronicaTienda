@@ -18,25 +18,7 @@ public class ProvedorCRUD extends ConnectionDB {
 		}
 	}
 
-	public void commit() {
-		try {
-			connection.commit();
-			closeConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void rollback() {
-		try {
-			connection.rollback();
-			closeConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 
 	public ObservableList<Proveedor> getProvedores() {
 		ObservableList<Proveedor> lista = FXCollections.observableArrayList();

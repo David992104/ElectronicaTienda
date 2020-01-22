@@ -1,7 +1,6 @@
 package com.osda.tienda.principal.addProveedor;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;

@@ -21,22 +21,7 @@ public class ProductoCRUD extends ConnectionDB {
 		}
 	}
 	
-	public void commit() {
-		try {
-			connection.commit();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public void rollback() {
-		try {
-			connection.rollback();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 
 	public ObservableList<Producto> getProductos() throws SQLException {
 		ResultSet result = null;
