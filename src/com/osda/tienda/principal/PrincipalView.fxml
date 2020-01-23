@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="525.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.PrincipalController">
+<BorderPane fx:id="bpRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="525.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.PrincipalController">
    <top>
       <Label text="Tienda" BorderPane.alignment="CENTER">
          <font>
@@ -34,6 +34,7 @@
 
             <JFXButton fx:id="btnAddProduct" onAction="#btnAddProductOnAction" text="Añadir Producto" />
             <JFXButton fx:id="btnAddProvedor" onAction="#btnAddProvedorOnAction" text="Añadir Provedor" />
+            <JFXButton fx:id="btnAddUser" onAction="#btnAddUserOnActioin" text="Añadir Usuario" />
          </children>
       </VBox>
    </left>
@@ -42,6 +43,7 @@
          <children>
             <JFXButton />
             <JFXButton />
+            <JFXButton fx:id="btnReporte" onAction="#btnReporteOnAction" text="Mostrar ventas" />
             <JFXButton />
          </children>
       </VBox>

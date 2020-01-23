@@ -145,7 +145,7 @@ public class SellController implements Initializable {
 		new ConfirmSellModel().pasarValores(totalPagar, productos, carShop, LoginModel.nombre);
 		new ConfirmSellModel().showWindow();
 		
-		//new SellModel().pasarValores(totalPagar, productos, carShop, LoginModel.nombre);
+		
 	}
 
 	@FXML
@@ -179,7 +179,7 @@ public class SellController implements Initializable {
 		new LoginModel();
 		lblDate.setText(new SellModel().getDate());
 		lblTime.setText(new SellModel().getTime());
-		txtCantidad.setText("0");
+		txtCantidad.setText("1");
 		txtPrecio.setText("0");
 		subtotal();
 	}
@@ -195,7 +195,7 @@ public class SellController implements Initializable {
 	}
 
 	private void vaciar() {
-		txtCantidad.setText("0");
+		txtCantidad.setText("1");
 		txtCodigo.setText(null);
 		txtDisponibles.setText(null);
 		txtPrecio.setText("0.0");

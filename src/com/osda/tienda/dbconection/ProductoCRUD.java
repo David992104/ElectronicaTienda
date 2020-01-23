@@ -3,6 +3,7 @@ package com.osda.tienda.dbconection;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.Callable;
 
 import com.osda.tienda.principal.addProducto.Producto;
 
@@ -55,4 +56,22 @@ public class ProductoCRUD extends ConnectionDB {
 		return result;
 
 	}
+	
+	
+	public boolean Producto(String codigoB, String descripccion, double precio, int existencias) throws SQLException {
+	 CallableStatement call = (CallableStatement) connection.prepareCall("{CALL modifProd(?,?,?,?)}");
+	 call.setString(1, codigoB);
+		call.setString(2, descripccion);
+		call.setDouble(3, precio);
+		call.setInt(4, existencias);
+		call.execute();
+
+	
+	return false;
+	}
+	
+	
+	
+	
+	
 }

@@ -18,14 +18,14 @@ import javafx.stage.Stage;
 public class ConfirmSellModel {
 	public static double precio;
 	public static int productos;
-	public ObservableList<SellModel> lista;
-	public String usuario;
+	public static ObservableList<SellModel> lista;
+	public static String usuario;
 
 	public ConfirmSellModel(double precio, int productos, ObservableList<SellModel> lista, String usuario) {
 		setPrecio(precio);
 		setProductos(productos);
-		this.lista = lista;
-		this.usuario = usuario;
+		setLista(lista);
+		setUsuario(usuario);
 
 	}
 
@@ -65,8 +65,8 @@ public class ConfirmSellModel {
 		this.usuario = usuario;
 	}
 
-	public void vender() {
-		if (new SellCRUD().insertarCompra(getLista(), productos, usuario)) {
+	public void vender(int cliente) {
+		if (new SellCRUD().insertarCompra(getLista(), cliente, usuario)) {
 			Notification.showMessage("Vendido");
 		}
 	}

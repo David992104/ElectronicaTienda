@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="400.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="bpRoot" prefHeight="400.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.principal.user.add.AddUserController">
    <top>
       <Label text="Añadir Usuario" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -40,7 +39,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </JFXPasswordField>
-                  <JFXButton fx:id="btnValidar" text="VALIDAR">
+                  <JFXButton fx:id="btnValidar" onAction="#btnValidaOnAcvtion" text="VALIDAR">
                      <HBox.margin>
                         <Insets left="40.0" />
                      </HBox.margin>
@@ -75,12 +74,12 @@
                   <JFXComboBox fx:id="cboxCargo" layoutX="270.0" layoutY="65.0" prefHeight="25.0" prefWidth="201.0" promptText="Cargo" />
                   <HBox alignment="CENTER" layoutY="239.0" prefHeight="39.0" prefWidth="540.0">
                      <children>
-                        <JFXButton fx:id="btnVaciar" prefHeight="25.0" prefWidth="59.0" text="VACIAR">
+                        <JFXButton fx:id="btnVaciar" onAction="#btnVacioOnAction" prefHeight="25.0" prefWidth="59.0" text="VACIAR">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="btnAgregar" text="AGREGAR">
+                        <JFXButton fx:id="btnAgregar" onAction="#btmAgregarOnAction" text="AGREGAR">
                            <HBox.margin>
                               <Insets left="300.0" />
                            </HBox.margin>

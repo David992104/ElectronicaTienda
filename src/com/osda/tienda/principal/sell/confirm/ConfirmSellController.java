@@ -55,7 +55,8 @@ public class ConfirmSellController implements Initializable {
 
 	@FXML
 	void btnAceptarOnAction(ActionEvent event) {
-		new ConfirmSellModel().vender();
+		new ConfirmSellModel().vender(Integer.parseInt(txtId.getText().toString().trim()));
+		vbRoot.getScene().getWindow().hide();
 	}
 
 	@FXML
