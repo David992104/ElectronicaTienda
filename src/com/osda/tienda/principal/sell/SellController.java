@@ -120,7 +120,9 @@ public class SellController implements Initializable {
 			carShop.add(new SellModel(txtCodigo.getText().toString().trim(), txtProducto.getText().toString().trim(),
 					Double.parseDouble(txtPrecio.getText().toString().trim()),
 					Integer.parseInt(txtCantidad.getText().toString().trim()),
-					Double.parseDouble(txtSubtotal.getText().toString().trim())));
+					Double.parseDouble(txtSubtotal.getText().toString().trim())
+					
+					));
 			llenarTabla();
 
 			bandera = true;

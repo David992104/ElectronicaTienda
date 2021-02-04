@@ -36,7 +36,7 @@ public class SellCRUD extends ConnectionDB {
 			call.setInt(1, codigoC);
 			call.setString(2, user);
 			call.execute();
-			while (call.getResultSet().next()) {
+			while (call.getResultSet().first()) {
 				if (call.getResultSet().getString(1).equals("0")) {
 					opc = false;
 					rollback();
@@ -55,11 +55,12 @@ public class SellCRUD extends ConnectionDB {
 				System.out.println("ticket " + ticket);
 				CallableStatement call = null;
 				for (SellModel prod : lista) {
-					call = (CallableStatement) connection.prepareCall("{CALL addSell(?,?,?)}");
+					call = (CallableStatement) connection.prepareCall("{CALL addSell(?,?,?,?)}");
 					call.setInt(1, ticket);
 					call.setString(2, prod.getCodigo());
 					System.out.println(prod.getCodigo());
 					call.setInt(3, prod.getCantidad());
+					call.setDouble(4, prod.getPrecio());
 					call.execute();
 					call.clearBatch();
 				}

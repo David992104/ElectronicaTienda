@@ -21,8 +21,6 @@ public class ProductoCRUD extends ConnectionDB {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	public ObservableList<Producto> getProductos() throws SQLException {
 		ResultSet result = null;
@@ -56,22 +54,16 @@ public class ProductoCRUD extends ConnectionDB {
 		return result;
 
 	}
-	
-	
+
 	public boolean Producto(String codigoB, String descripccion, double precio, int existencias) throws SQLException {
-	 CallableStatement call = (CallableStatement) connection.prepareCall("{CALL modifProd(?,?,?,?)}");
-	 call.setString(1, codigoB);
+		CallableStatement call = (CallableStatement) connection.prepareCall("{CALL modifProd(?,?,?,?)}");
+		call.setString(1, codigoB);
 		call.setString(2, descripccion);
 		call.setDouble(3, precio);
 		call.setInt(4, existencias);
 		call.execute();
 
-	
-	return false;
+		return false;
 	}
-	
-	
-	
-	
-	
+
 }
