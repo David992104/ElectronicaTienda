@@ -11,7 +11,7 @@
  Target Server Version : 100504
  File Encoding         : 65001
 
- Date: 03/02/2021 22:14:41
+ Date: 10/02/2021 22:37:33
 */
 
 SET NAMES utf8mb4;
@@ -32,13 +32,19 @@ CREATE TABLE `bitacoraprodupdate`  (
   `exisAntes` int NOT NULL,
   `exisDespues` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 157 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 166 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of bitacoraprodupdate
 -- ----------------------------
 INSERT INTO `bitacoraprodupdate` VALUES (155, 'root@localhost', '2021-01-18 23:18:13', 'Computadora hp', 'Computadora hp', 12578.90, 12578.90, 2, 1);
 INSERT INTO `bitacoraprodupdate` VALUES (156, 'root@localhost', '2021-02-03 09:06:15', 'Computadora hp', 'Computadora hp', 12578.90, 12578.90, 1, 5);
+INSERT INTO `bitacoraprodupdate` VALUES (158, 'root@localhost', '2021-02-09 20:35:00', 'Computadora hp', 'Computadora hp', 12578.90, 12578.90, 5, 4);
+INSERT INTO `bitacoraprodupdate` VALUES (161, 'root@localhost', '2021-02-09 23:50:27', 'Computadora hp', 'Computadora hp', 12578.90, 12578.90, 4, 3);
+INSERT INTO `bitacoraprodupdate` VALUES (162, 'root@localhost', '2021-02-09 23:50:27', 'Memoria RAM PNY', 'Memoria RAM PNY', 2000.00, 2000.00, 20, 19);
+INSERT INTO `bitacoraprodupdate` VALUES (163, 'root@localhost', '2021-02-10 21:22:09', 'Mouse HP', 'Mouse HP', 189.00, 189.00, 67, 57);
+INSERT INTO `bitacoraprodupdate` VALUES (164, 'root@localhost', '2021-02-10 21:22:09', 'Computadora hp', 'Computadora hp', 12578.90, 12578.90, 3, 2);
+INSERT INTO `bitacoraprodupdate` VALUES (165, 'root@localhost', '2021-02-10 21:26:17', 'Mouse HP', 'Mouse HP', 189.00, 189.00, 57, 56);
 
 -- ----------------------------
 -- Table structure for cargo
@@ -54,7 +60,8 @@ CREATE TABLE `cargo`  (
 -- ----------------------------
 -- Records of cargo
 -- ----------------------------
-INSERT INTO `cargo` VALUES (4, 'gerente', 'Puede controlar todos los controles');
+INSERT INTO `cargo` VALUES (1, 'Gerente', 'Puede hacer todo lo  de los demas y mas');
+INSERT INTO `cargo` VALUES (3, 'Trabajador', 'Puede controlar todos los controles');
 
 -- ----------------------------
 -- Table structure for cliente
@@ -69,12 +76,17 @@ CREATE TABLE `cliente`  (
   `telefono` varchar(12) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `status` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`codigoCliente`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of cliente
 -- ----------------------------
+INSERT INTO `cliente` VALUES (0, 'Publico ', 'General', NULL, 'Conocida', '12345678', '1');
+INSERT INTO `cliente` VALUES (1, 'Empleados', 'Tienda', NULL, 'Conocida', '1234567890', '1');
 INSERT INTO `cliente` VALUES (14, 'Flor', 'Huerta', '', 'Corrales', '77313348767', '1');
+INSERT INTO `cliente` VALUES (15, 'David', 'Osornio', '', 'Tepeji', '56200', '1');
+INSERT INTO `cliente` VALUES (16, 'David', 'Osornio', '', 'Tepeji', '3434334', '1');
+INSERT INTO `cliente` VALUES (18, 'David', 'Osornio', '', 'Tepeji', '34567890', '1');
 
 -- ----------------------------
 -- Table structure for compra
@@ -90,7 +102,7 @@ CREATE TABLE `compra`  (
   INDEX `user`(`idUser`) USING BTREE,
   CONSTRAINT `fk_compra_cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `cliente` (`codigoCliente`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `user` FOREIGN KEY (`idUser`) REFERENCES `usuario` (`idUser`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10031 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 10043 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of compra
@@ -98,6 +110,10 @@ CREATE TABLE `compra`  (
 INSERT INTO `compra` VALUES (10026, 14, '0000-00-00 00:00:00', 9);
 INSERT INTO `compra` VALUES (10027, 14, '2021-01-18 23:16:52', 9);
 INSERT INTO `compra` VALUES (10028, 14, '2021-01-18 23:18:13', 9);
+INSERT INTO `compra` VALUES (10037, 14, '2021-02-09 20:35:00', 9);
+INSERT INTO `compra` VALUES (10040, 14, '2021-02-09 23:50:27', 9);
+INSERT INTO `compra` VALUES (10041, 14, '2021-02-10 21:22:09', 9);
+INSERT INTO `compra` VALUES (10042, 18, '2021-02-10 21:26:17', 9);
 
 -- ----------------------------
 -- Table structure for detallecompra
@@ -114,13 +130,19 @@ CREATE TABLE `detallecompra`  (
   INDEX `fk_detallecompra_codigobarras`(`codigobarras`) USING BTREE,
   CONSTRAINT `fk_detallecompra_codigobarras` FOREIGN KEY (`codigobarras`) REFERENCES `producto` (`codigobarras`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_detallecompra_compra` FOREIGN KEY (`noTicket`) REFERENCES `compra` (`noTicket`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of detallecompra
 -- ----------------------------
 INSERT INTO `detallecompra` VALUES (25, 10026, '1023', 1, 0.00);
 INSERT INTO `detallecompra` VALUES (26, 10027, '1023', 1, 0.00);
+INSERT INTO `detallecompra` VALUES (28, 10037, '1023', 1, 12578.90);
+INSERT INTO `detallecompra` VALUES (31, 10040, '1023', 1, 12578.90);
+INSERT INTO `detallecompra` VALUES (32, 10040, '1021', 1, 2000.00);
+INSERT INTO `detallecompra` VALUES (33, 10041, '1025', 10, 189.00);
+INSERT INTO `detallecompra` VALUES (34, 10041, '1023', 1, 12578.90);
+INSERT INTO `detallecompra` VALUES (35, 10042, '1025', 1, 189.00);
 
 -- ----------------------------
 -- Table structure for producto
@@ -138,7 +160,10 @@ CREATE TABLE `producto`  (
 -- ----------------------------
 -- Records of producto
 -- ----------------------------
-INSERT INTO `producto` VALUES ('1023', 'Computadora hp', 12578.90, 5, '1');
+INSERT INTO `producto` VALUES ('1021', 'Memoria RAM PNY', 2000.00, 19, '1');
+INSERT INTO `producto` VALUES ('1023', 'Computadora hp', 12578.90, 2, '1');
+INSERT INTO `producto` VALUES ('1024', 'Computadora DELL', 25000.00, 3, '1');
+INSERT INTO `producto` VALUES ('1025', 'Mouse HP', 189.00, 56, '1');
 
 -- ----------------------------
 -- Table structure for provedor
@@ -152,12 +177,14 @@ CREATE TABLE `provedor`  (
   `direccion` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `telefono` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`codigoProvedor`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of provedor
 -- ----------------------------
 INSERT INTO `provedor` VALUES (13, 'OSDA electronicos', 'osda12312', 'osda@osda.com.mx', 'Tepeji del Rio', '5567102230');
+INSERT INTO `provedor` VALUES (14, 'ibm', 'ibm1212', 'ibm@ibm.org', 'Canada', '56789023');
+INSERT INTO `provedor` VALUES (15, 'OSDA', 'osdaer323', 'osda@osda.com', 'Cnocido', '235235');
 
 -- ----------------------------
 -- Table structure for proveedorproducto
@@ -195,12 +222,14 @@ CREATE TABLE `usuario`  (
   PRIMARY KEY (`idUser`) USING BTREE,
   INDEX `cargo`(`idCargo`) USING BTREE,
   CONSTRAINT `cargo` FOREIGN KEY (`idCargo`) REFERENCES `cargo` (`idCargo`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of usuario
 -- ----------------------------
-INSERT INTO `usuario` VALUES (9, 'David', 'Osornio', '', 'dave', 'dave', 4, '1');
+INSERT INTO `usuario` VALUES (9, 'David', 'Osornio', '', 'dave', 'osda', 1, '1');
+INSERT INTO `usuario` VALUES (11, 'Salvador', 'Jimenez', '', 'chava', 'chava', 3, '1');
+INSERT INTO `usuario` VALUES (12, 'Mariel', 'Garcia', '', 'mariel', 'mariel', 3, '1');
 
 -- ----------------------------
 -- Procedure structure for addProductoSp
@@ -224,7 +253,7 @@ ELSE
 	IF codigoBD = codigo OR productoBD = producto THEN
 		SELECT 'prodExistente' AS Error;
 	ELSE
-		INSERT INTO producto VALUES (codigo, producto, precio, existencias);
+		INSERT INTO producto VALUES (codigo, producto, precio, existencias, 1);
 		SELECT 'Aniadido' AS Exito;
 	END IF;
 END IF;
@@ -274,11 +303,12 @@ CREATE PROCEDURE `addSell`(IN ticket INT(11),
 BEGIN
 	DECLARE exis INT(10);
 	SELECT existencias INTO exis FROM producto WHERE codigobarras = codigoB;
-	
-		if cant > 0 THEN
-			INSERT INTO detallecompra VALUES(NULL, ticket, cant, codigoB, precioVenta);
+	if cant > 0  and exis >= cant then
+			INSERT INTO detallecompra VALUES(NULL, ticket, codigoB, cant, precioVenta);
 			UPDATE producto SET existencias = (exis - cant) WHERE codigobarras = codigoB;
 			SELECT "1";
+		else
+				select "0";
 		END IF;
 END
 ;;
@@ -298,7 +328,7 @@ BEGIN
 	
 	IF pass = pass THEN
 		
-		INSERT INTO usuario VALUES (null, nombre, ape1, ape2, users, pass, 3);
+		INSERT INTO usuario VALUES (null, nombre, ape1, ape2, users, pass, 3, 1);
 		SELECT '1' AS Good;
 	ELSE
 		SELECT '0' AS Error;
@@ -336,16 +366,14 @@ delimiter ;;
 CREATE PROCEDURE `createTicket`(IN codigoC INT(5),
 	IN usua VARCHAR(20))
 BEGIN
-	DECLARE fecha DATETIME;
+		DECLARE fecha DATETIME;
 	
 	SELECT NOW() INTO fecha;
 	IF (SELECT codigoCliente FROM cliente WHERE codigoCliente = codigoC) = codigoC THEN
 		IF (SELECT usuario from usuario WHERE usuario=usua) = usua THEN
 		
 			INSERT INTO compra VALUES (null, codigoC, fecha, (select idUser from usuario where usuario=usua));
-			-- INSERT INTO usuariocompra VALUES (null, 
-			-- 	(SELECT idUser from usuario WHERE usuario = usua), 
-			-- 	(SELECT noTicket FROM compra WHERE fechaCompra = fecha AND codigoCliente = codigoC),);
+			
 			SELECT noTicket FROM compra WHERE fechaCompra = fecha AND codigoCliente = codigoC;
 			
 		ELSE
@@ -442,6 +470,19 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for getCargos
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `getCargos`;
+delimiter ;;
+CREATE PROCEDURE `getCargos`()
+BEGIN
+	SELECT Nombre FROM cargo;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for getProduct
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `getProduct`;
@@ -479,13 +520,13 @@ if usua = usuarios then
 	SELECT contrasena INTO contrasenia FROM usuario WHERE usuario=usuarios ;
 
 	IF contrasenia = pass then 
-		SELECT "Bienvenido" as Bienvenido;
+		SELECT "1" as Bienvenido;
 		
 	else
-		SELECT "Contraseña mal" as Error;
+		SELECT "0" as Error;
 	END IF;
 else
-	select "Usuario no existe" as Error;
+	select "0" as Error;
 end if;
 
 END
