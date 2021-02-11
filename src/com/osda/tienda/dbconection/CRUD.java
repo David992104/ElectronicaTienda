@@ -1,41 +1,49 @@
 package com.osda.tienda.dbconection;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.CallableStatement;
 
 public class CRUD extends ConnectionDB {
-	public CRUD() {
+
+	public String loginUser(String user, String pass) {
+		getConnection("Desde Crud de loginUser");
+		String result = "";
+
 		try {
-			ConnectionDB.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+
+			CallableStatement call = (CallableStatement) connection.prepareCall("{CALL loginSp(?,?)}");
+			call.setString(1, user);
+			call.setString(2, pass);
+			call.execute();
+
+			while (call.getResultSet().next())
+				result = call.getResultSet().getString(1);
+
+			closeConnection();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		}
-	}
-	
-	public ResultSet loginUser(String user, String pass) throws SQLException {
-		CallableStatement call = (CallableStatement) connection.prepareCall("{CALL loginSp(?,?)}");
-		call.setString(1, user);
-		call.setString(2, pass);
-		call.execute();
 
-		return call.getResultSet();
+		return result;
 	}
 
-	public boolean findAdmin(String userAdmin, String passAdmin) throws SQLException {			
-		CallableStatement call = (CallableStatement) connection.prepareCall("{CALL findAdminSp(?, ?)}");
-		call.setString(1, userAdmin);
-		call.setString(2, passAdmin);
-		call.execute();
-
+	public boolean findAdmin(String userAdmin, String passAdmin) {
+		getConnection("Desde Crud de losgin userAdmin");
 		String resp = "";
-		while (call.getResultSet().next()) {
-			resp = call.getResultSet().getString(1);
-		}
+		try {
+			CallableStatement consult = (CallableStatement) connection.prepareCall("{CALL findAdminSp(?, ?)}");
+			consult.setString(1, userAdmin);
+			consult.setString(2, passAdmin);
+			consult.execute();
 
-		ConnectionDB.closeConnection();
-	
+			while (consult.getResultSet().next()) 
+				resp = consult.getResultSet().getString(1);
+
+			closeConnection();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
 		if (resp.equals("1"))
 			return true;
 		else
@@ -45,18 +53,19 @@ public class CRUD extends ConnectionDB {
 	public boolean changePass(String user, String newPass) {
 		String resp = "";
 		try {
+			getConnection("Desde Crud de ChangePass");
 			CallableStatement call = (CallableStatement) connection.prepareCall("{CALL ressetPassSp(?, ?)}");
 			call.setString(1, user);
 			call.setString(2, newPass);
 			call.execute();
-						
-			while (call.getResultSet().next()) 
+
+			while (call.getResultSet().next())
 				resp = call.getResultSet().getString(1);
-			
-			ConnectionDB.closeConnection();			
+
+			ConnectionDB.closeConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}
 		if (resp.equals("1"))
 			return true;
 		else

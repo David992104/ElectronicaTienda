@@ -74,7 +74,7 @@ public class SellController implements Initializable {
 
 	private ObservableList<SellModel> carShop = FXCollections.observableArrayList();
 
-	private boolean bandera;
+	private boolean bandera = true;
 
 	private double totalPagar = 0;
 	private int productos = 0;
@@ -89,12 +89,12 @@ public class SellController implements Initializable {
 
 	@FXML
 	void txtBuscarOnAction(ActionEvent event) {
-		String codigo = txtCodigo.getText().toString().trim();
+		String codigo = txtCodigo.getText().toString();
 		if (codigo.equals("")) {
 			Notification.showMessage("Rectifique el campo Codigo");
 			txtCodigo.requestFocus();
 		} else {
-			ResultSet result = new SellModel().buscar(codigo);
+			ResultSet result = new SellModel().buscar(codigo.trim());
 			try {
 				while (result.next()) {
 					if (result.getString(1).equals("0")) {
@@ -116,22 +116,29 @@ public class SellController implements Initializable {
 
 	@FXML
 	void btnAnadirOnAction(ActionEvent event) {
-		if (!bandera && Integer.parseInt(txtCantidad.getText().toString().trim()) > 0) {
-			carShop.add(new SellModel(txtCodigo.getText().toString().trim(), txtProducto.getText().toString().trim(),
-					Double.parseDouble(txtPrecio.getText().toString().trim()),
-					Integer.parseInt(txtCantidad.getText().toString().trim()),
-					Double.parseDouble(txtSubtotal.getText().toString().trim())
-					
-					));
-			llenarTabla();
+		String codigo = txtCodigo.getText().toString(); 
+		
+		if (!codigo.equals("")) {
+			if (!bandera && Integer.parseInt(txtCantidad.getText().toString().trim()) > 0) {
+				carShop.add(
+						new SellModel(codigo.trim(), txtProducto.getText().toString().trim(),
+								Double.parseDouble(txtPrecio.getText().toString().trim()),
+								Integer.parseInt(txtCantidad.getText().toString().trim()),
+								Double.parseDouble(txtSubtotal.getText().toString().trim())
 
-			bandera = true;
-			totalPagar += Double.parseDouble(txtSubtotal.getText().toString().trim());
-			lblTotal.setText(totalPagar + "");
-			productos++;			
-			vaciar();
-		}else {
-			Notification.sendError("Cantidad tiene que ser mayor a 0");
+						));
+				llenarTabla();
+
+				bandera = true;
+				totalPagar += Double.parseDouble(txtSubtotal.getText().toString().trim());
+				lblTotal.setText(totalPagar + "");
+				productos++;
+				vaciar();
+			} else {
+				Notification.sendError("Cantidad tiene que ser mayor a 0");
+			}
+		} else {
+			Notification.sendError("Debes introducir un codigo de barras");
 		}
 	}
 
@@ -143,17 +150,16 @@ public class SellController implements Initializable {
 
 	@FXML
 	void btnProcederOnAction(ActionEvent event) {
-		
+
 		new ConfirmSellModel().pasarValores(totalPagar, productos, carShop, LoginModel.nombre);
 		new ConfirmSellModel().showWindow();
-		
-		
+
 	}
 
 	@FXML
 	void btnVaciarOnAction(ActionEvent event) {
 		vaciar();
-		limpiarLista();
+		// limpiarLista();
 	}
 
 	@FXML
@@ -217,14 +223,15 @@ public class SellController implements Initializable {
 		int cant = 0;
 		double precio = 0;
 		int disponibles = 0;
-		if ((txtCantidad.getText().toString().trim()).equals("")
-				|| txtDisponibles.getText().toString().trim().equals("")) {
-			cant = 0;
+		String cantidadView = txtCantidad.getText().toString().trim();
+		String disponiblesView = txtDisponibles.getText().toString().trim();
 
-		} else {
-			cant = Integer.parseInt(txtCantidad.getText().toString().trim());
+		if (cantidadView.equals("") || disponiblesView.equals(""))
+			cant = 0;
+		else {
+			cant = Integer.parseInt(cantidadView);
 			precio = Double.parseDouble(txtPrecio.getText().toString().trim());
-			disponibles = Integer.parseInt(txtDisponibles.getText().toString().trim());
+			disponibles = Integer.parseInt(disponiblesView);
 
 			if (cant < 0 || cant > disponibles) {
 				Notification.sendError("Rectifica tu cantidad\nDebes escojer entre 1 y " + disponibles);

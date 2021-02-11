@@ -1,4 +1,4 @@
-package com.osda.tienda.principal.newclient;
+package com.osda.tienda.principal.client.newclient;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class NewClientModel {
 
 	public void showWindow(TabPane tabPane) {
 		FXMLLoader loader = new FXMLLoader(
-				getClass().getResource("/com/osda/tienda/principal/newclient/NewClientView.fxml"));
+				getClass().getResource("/com/osda/tienda/principal/client/newclient/NewClientView.fxml"));
 		AnchorPane window = null;
 		try {
 			window = loader.load();
@@ -45,10 +45,11 @@ public class NewClientModel {
 		}
 
 		Tab tab = new Tab();
-		tab.setText("Cliente Nuevo");
+		tab.setText("Clientes");
 		tab.setContent(window);
 		tab.setId("1");
 		tabPane.getTabs().add(tab);
+		
 		tabPane.getSelectionModel().select(tab);
 	}
 

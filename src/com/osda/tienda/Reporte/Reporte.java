@@ -21,7 +21,7 @@ public class Reporte {
     
     public void generarReporte() throws ClassNotFoundException, SQLException{
     	 ConnectionDB conexion = new  ConnectionDB();
-        Connection conn = conexion.getConnection();
+        Connection conn = conexion.getConnection("Desde el genrado de reportes");
         
         try{
             InputStream dir = getClass().getResourceAsStream("/com/osda/tienda/Reporte/"+

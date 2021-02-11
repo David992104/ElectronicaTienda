@@ -45,7 +45,7 @@ public class AddUserController {
 	private JFXPasswordField txtConfPassword;
 
 	@FXML
-	private JFXComboBox<?> cboxCargo;
+	private JFXComboBox</*?*/String> cboxCargo;
 
 	@FXML
 	private JFXButton btnVaciar;
@@ -66,8 +66,7 @@ public class AddUserController {
 					txtPassword.getText().toString().trim(), txtConfPassword.getText().toString().trim())) {
 				vaciar();
 			}
-			{
-			}
+			
 		}
 
 	}
@@ -101,10 +100,14 @@ public class AddUserController {
 			try {
 				panelUsuario.setDisable(!(new AddUserModel().findAdmin(txtUGerente.getText().toString().trim(),
 						txtCGerente.getText().toString().trim())));
+				
+				//Añadiendo valores al combobox
+				//cboxCargo.setItems(new AddUserModel().getCargos());	
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
+	
 }

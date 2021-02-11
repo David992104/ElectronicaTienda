@@ -1,8 +1,7 @@
 package com.osda.tienda.login.forgetpass;
 
-import java.sql.SQLException;
-
 import com.osda.tienda.dbconection.CRUD;
+import com.osda.tienda.login.LoginModel;
 import com.osda.tienda.notification.Notification;
 
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,7 @@ public class ForgetPassModel {
 		boolean resp = false;
 		if (pass.equals(passConfirm)) {
 			resp = new CRUD().changePass(user, pass);
+			new LoginModel().showWindow();
 			Notification.showMessage("Contrase�a cambiada exitosamente");
 		}else {
 			Notification.showMessage("Revisa tu informacion\nContrase�as no coinciden");
@@ -23,10 +23,11 @@ public class ForgetPassModel {
 		return resp;
 	}
 	
-	public boolean findAdmin(String userAdmin, String passAdmin) throws SQLException {
+	public boolean findAdmin(String userAdmin, String passAdmin) {
+		boolean resultado = new CRUD().findAdmin(userAdmin, passAdmin); 
 		
-		if ((new CRUD().findAdmin(userAdmin, passAdmin)))
-			return new CRUD().findAdmin(userAdmin, passAdmin);
+		if (resultado)
+			return resultado;
 		else {
 			Notification.sendError("El usuario no existe o \nNo tiene privilegios");
 			return false;

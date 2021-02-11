@@ -1,4 +1,4 @@
-package com.osda.tienda.principal.newclient;
+package com.osda.tienda.principal.client.newclient;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -68,11 +68,11 @@ public class NewClientController {
     		txtAdress.requestFocus();
     	else
     		if (new NewClientModel().createClient(nombre, ape1, ape2, number, adress)) {
-    			txtname.setText(null);
-    			txtApe1.setText(null);
-    			txtApe2.setText(null);
-    			txtNumber.setText(null);
-    			txtAdress.setText(null);
+    			txtname.setText("");
+    			txtApe1.setText("");
+    			txtApe2.setText("");
+    			txtNumber.setText("");
+    			txtAdress.setText("");
     		}
     }
 

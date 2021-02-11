@@ -1,18 +1,17 @@
 package com.osda.tienda.dbconection;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.CallableStatement;
 
+import javafx.collections.ObservableList;
+
 public class UserCRUD extends ConnectionDB {
 
 	public UserCRUD() {
-		try {
-			ConnectionDB.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+	
+			ConnectionDB.getConnection("Desde UserCrud");
+		
 	}
 
 	public boolean addUser(String nombre, String ape1, String ape2, String user, String pass) {
@@ -24,7 +23,7 @@ public class UserCRUD extends ConnectionDB {
 			call.setString(3, ape2);
 			call.setString(4, user);
 			call.setString(5, pass);
-			//call.setInt(6, 3);
+			// call.setInt(6, 3);
 			call.execute();
 
 			while (call.getResultSet().next()) {
@@ -62,6 +61,36 @@ public class UserCRUD extends ConnectionDB {
 		else
 			return false;
 
+	}
+
+	@SuppressWarnings("null")
+	public ObservableList<String> getCargos() {
+		ObservableList<String> listaCargos = null;
+		int count = 0;
+		String valor = "";
+		try {
+			CallableStatement consult = (CallableStatement) connection.prepareCall("{CALL getCargos()}");
+			consult.execute();
+			
+			System.out.println("Consulta realizada");
+			
+			while (consult.getResultSet().next()) {
+				System.out.println("Comenzando a llenar lista");
+				valor = consult.getResultSet().getString(1);
+				System.out.println(valor);
+				
+				listaCargos.add(valor);
+				
+				//listaCargos.add(count, consult.getResultSet().getString(1));
+				
+				count ++;
+			}
+			
+			ConnectionDB.closeConnection();
+		} catch (SQLException sql) {
+			sql.printStackTrace();
+		}
+		return listaCargos;
 	}
 
 }

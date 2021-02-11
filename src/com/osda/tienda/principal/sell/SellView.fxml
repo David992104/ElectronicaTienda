@@ -133,7 +133,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="33.0" prefWidth="557.0">
                      <children>
-                        <JFXButton fx:id="btnCancelar" onAction="#btnCancelarOnAction" prefHeight="25.0" prefWidth="82.0" text="Cancelar" />
+                        <JFXButton fx:id="btnCancelar" onAction="#btnCancelarOnAction" prefHeight="25.0" prefWidth="100.0" text="Limpiar tabla" />
                         <JFXButton fx:id="btnProceder" onAction="#btnProcederOnAction" text="Proceder">
                            <HBox.margin>
                               <Insets left="380.0" />

@@ -19,7 +19,7 @@ import com.osda.tienda.Reporte.Reporte;
 import com.osda.tienda.login.LoginModel;
 import com.osda.tienda.principal.addProducto.AddProdModel;
 import com.osda.tienda.principal.addProveedor.addProveedorModel;
-import com.osda.tienda.principal.newclient.NewClientModel;
+import com.osda.tienda.principal.client.newclient.NewClientModel;
 import com.osda.tienda.principal.sell.SellModel;
 import com.osda.tienda.principal.user.add.AddUserModel;
 
@@ -72,6 +72,7 @@ public class PrincipalController implements Initializable {
 	@FXML
 	void btnNewClientOnAction(ActionEvent e) {
 		new NewClientModel().showWindow(tabPaneTienda);
+		//new ClientModel().showWindow(tabPaneTienda);
 	}
 
 	@FXML

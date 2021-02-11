@@ -15,6 +15,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/com/osda/tienda/splash/SplashView.fxml"));
+			//Parent root = FXMLLoader.load(getClass().getResource("/com/osda/tienda/principal/PrincipalView.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);

@@ -1,32 +1,25 @@
 package com.osda.tienda.login;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.osda.tienda.dbconection.CRUD;
-import com.osda.tienda.dbconection.ConnectionDB;
 import com.osda.tienda.login.forgetpass.ForgetPassModel;
 import com.osda.tienda.principal.PrincipalModel;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class LoginModel {
 	private boolean logAcepted;
 
 	public static String nombre;
+	
 
-	public String logNow(String user, String pass) throws ClassNotFoundException, SQLException {
+	public String logNow(String user, String pass) throws ClassNotFoundException {
 		String urlImg = "";
-		String result = "";
-		ConnectionDB.getConnection();
-    	ResultSet userMessage = new CRUD().loginUser(user, pass);
-    	
-		while (userMessage.next()) {
-			result = userMessage.getString(1);
-		}
-		closeConnection();
+		String result = new CRUD().loginUser(user, pass);
 		
-		if (result.equals("Bienvenido")) {
+		if (result.equals("1")) {
 			urlImg = "/resources/bien.png";
 			setLogAcepted(true);
 			LoginModel.nombre = user; //MAndamos el user a la principal
@@ -35,12 +28,6 @@ public class LoginModel {
 			setLogAcepted(false);
 		}
 		return urlImg;
-	}
-	
-	
-	
-	public void closeConnection() throws SQLException {
-		ConnectionDB.closeConnection();
 	}
 	
 	public void goToForegetPass() {
@@ -52,6 +39,21 @@ public class LoginModel {
 		root.getScene().getWindow().hide();
 		
 	}
+	
+	 public void showWindow() {
+	    	try {
+				FXMLLoader loader = new FXMLLoader(getClass()
+						.getResource("/com/osda/tienda/login/LoginView.fxml"));
+				AnchorPane root = loader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root, 200, 275));
+				stage.setTitle("Login");
+				stage.centerOnScreen();
+				stage.show();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+	    }
 
 	public boolean isLogAcepted() {
 		return logAcepted;

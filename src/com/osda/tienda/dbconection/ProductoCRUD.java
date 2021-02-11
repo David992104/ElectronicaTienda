@@ -13,13 +13,9 @@ import javafx.collections.ObservableList;
 public class ProductoCRUD extends ConnectionDB {
 
 	public ProductoCRUD() {
-		try {
-			getConnection();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
+			getConnection("Desde ProductoCrud");
+		
 	}
 
 	public ObservableList<Producto> getProductos() throws SQLException {

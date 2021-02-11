@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.osda.tienda.dbconection.ClientCRUD;
+import com.osda.tienda.dbconection.ConnectionDB;
 import com.osda.tienda.dbconection.SellCRUD;
 import com.osda.tienda.notification.Notification;
 import com.osda.tienda.principal.sell.SellModel;
@@ -26,48 +27,13 @@ public class ConfirmSellModel {
 		setProductos(productos);
 		setLista(lista);
 		setUsuario(usuario);
-
 	}
-
-	public ConfirmSellModel() {
-	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		ConfirmSellModel.precio = precio;
-	}
-
-	public int getProductos() {
-		return productos;
-	}
-
-	public void setProductos(int productos) {
-		ConfirmSellModel.productos = productos;
-	}
-
-	public ObservableList<SellModel> getLista() {
-		return lista;
-	}
-
-	public void setLista(ObservableList<SellModel> lista) {
-		this.lista = lista;
-	}
-
-	public String getUsuario() {
-		System.out.println(this.usuario);
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
+	
+	public ConfirmSellModel() {}
+	
 	public void vender(int cliente) {
 		if (new SellCRUD().insertarCompra(getLista(), cliente, usuario)) {
-			Notification.showMessage("Vendido");
+			Notification.showMessage("Venta completada");
 		}
 	}
 	
@@ -76,7 +42,6 @@ public class ConfirmSellModel {
 		String cliente[] = new String[4];
 		try {
 			while (result.next()) {
-
 				if (result.getString(1).equals("0") || result.getString(1).equals("00")) {
 					Notification.showMessage("El cliente no existe");
 				} else {
@@ -86,9 +51,8 @@ public class ConfirmSellModel {
 					cliente[3] = result.getString(4);
 				}
 			}
-			ClientCRUD.closeConnection();
+			ConnectionDB.closeConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return cliente;
@@ -117,9 +81,45 @@ public class ConfirmSellModel {
 			stage.show();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		ConfirmSellModel.precio = precio;
+	}
+
+	public int getProductos() {
+		return productos;
+	}
+
+	public void setProductos(int productos) {
+		ConfirmSellModel.productos = productos;
+	}
+
+	public ObservableList<SellModel> getLista() {
+		return lista;
+	}
+
+	@SuppressWarnings("static-access")
+	public void setLista(ObservableList<SellModel> lista) {
+		this.lista = lista;
+	}
+
+	@SuppressWarnings("static-access")
+	public String getUsuario() {
+		System.out.println(this.usuario);
+		return usuario;
+	}
+
+	@SuppressWarnings("static-access")
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	
+	
 }

@@ -11,36 +11,27 @@ import com.osda.tienda.principal.sell.SellModel;
 import javafx.collections.ObservableList;
 
 public class SellCRUD extends ConnectionDB {
-	public SellCRUD() {
-		try {
-			getConnection();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public boolean insertarCompra(ObservableList<SellModel> lista, int codigoC, String user) {
 		int ticket = 0;
 		boolean opc = false;
+
+		getConnection("Desde el sellcrud dentro de instertar compra");
+
 		try {
-			getConnection();
-		} catch (ClassNotFoundException | SQLException e1) {
-			e1.printStackTrace();
-		}
-		try {
+			System.out.println("Creado ticket");
 			connection.setAutoCommit(false);
 			CallableStatement call = (CallableStatement) connection.prepareCall("{CALL createTicket(?,?)}");
-			
 			call.setInt(1, codigoC);
 			call.setString(2, user);
 			call.execute();
-			while (call.getResultSet().first()) {
+			
+			System.out.println("Ticket añadido");
+			
+			while (call.getResultSet().next()) {
 				if (call.getResultSet().getString(1).equals("0")) {
 					opc = false;
 					rollback();
-					closeConnection();
 				} else {
 					ticket = call.getResultSet().getInt(1);
 					opc = true;
@@ -64,18 +55,20 @@ public class SellCRUD extends ConnectionDB {
 					call.execute();
 					call.clearBatch();
 				}
+				
 				while (call.getResultSet().next()) {
 					if (call.getResultSet().getString(1).equals("1"))
 						opc = true;
 				}
+				
 				if (JOptionPane.showConfirmDialog(null, "Confirmar venta") == 0) {
 					commit();
 					opc = true;
 				} else {
 					rollback();
-				
 					opc = false;
 				}
+				closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -85,18 +78,19 @@ public class SellCRUD extends ConnectionDB {
 	}
 
 	public ResultSet buscarProd(String codigo) {
-
+		getConnection("Desde el SellCrud buscar producto");
 		ResultSet result = null;
 		try {
 			CallableStatement call = (CallableStatement) connection.prepareCall("{CALL searchProduct(?)}");
 			call.setString(1, codigo);
 			call.execute();
 			result = call.getResultSet();
-
+			
+			//closeConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
 	}
 }
+

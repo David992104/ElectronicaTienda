@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="apRoot" prefHeight="535.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.forgetpass.ForgetPassController">
+<AnchorPane fx:id="apRoot" prefHeight="535.0" prefWidth="300.0" onKeyPressed="#enterOnKeyPressed" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.forgetpass.ForgetPassController">
 	<children>
 		<VBox alignment="CENTER" prefHeight="500.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
 				<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
 					<image>
-						<Image url="@../../../../../../../../../../../../../home/david/Imágenes/Screenshot_20191220_013736.png" />
+						<Image url="/resources/users.png" />
 					</image>
 				</ImageView>
 				<Pane fx:id="paneAdmin" accessibleText="s" prefHeight="200.0" prefWidth="260.0">

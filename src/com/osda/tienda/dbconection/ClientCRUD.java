@@ -6,15 +6,9 @@ import java.sql.SQLException;
 import com.mysql.jdbc.CallableStatement;
 
 public class ClientCRUD extends ConnectionDB {
-	public ClientCRUD() {
-		try {
-			ConnectionDB.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public boolean createClient(String[] data) {
+		ConnectionDB.getConnection("Desde ClienteCrud");
 		String result = "";
 		try {
 			CallableStatement call = (CallableStatement) connection.prepareCall("{CALL createClient(?,?,?,?,?)}");
@@ -37,6 +31,7 @@ public class ClientCRUD extends ConnectionDB {
 	}
 
 	public ResultSet buscarCliente(int codigo) {
+		ConnectionDB.getConnection("Desde ClienteCrud");
 		ResultSet result = null;
 		try {
 			CallableStatement call = (CallableStatement) connection.prepareCall("{CALL searchClient(?)}");
@@ -45,6 +40,7 @@ public class ClientCRUD extends ConnectionDB {
 
 			result = call.getResultSet();
 
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 

@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+//import com.osda.tienda.notification.Notification;
 import com.osda.tienda.notification.Notification;
 
 import javafx.event.ActionEvent;
@@ -37,11 +38,12 @@ public class ConfirmSellController implements Initializable {
 
 	@FXML
 	void txtIdOnKeyTyped(KeyEvent event) {
-		if (txtId.getText().toString().trim().equals("")) {
+		String idClient = txtId.getText().toString().trim(); 
+		if (idClient.equals("")) {
 			txtId.setText("0");
 		} else {
-			int codigo = Integer.parseInt(txtId.getText().toString().trim());
-			if (codigo <= 0) {
+			int codigo = Integer.parseInt(idClient);
+			if (codigo < 0) {
 				Notification.sendError("Ingresa un codigo de cliente valido");
 			} else {
 				String[] cliente = new ConfirmSellModel().buscarCliente(codigo);
@@ -55,8 +57,16 @@ public class ConfirmSellController implements Initializable {
 
 	@FXML
 	void btnAceptarOnAction(ActionEvent event) {
+		
+		System.out.println("Añadiendo compra");
+		
 		new ConfirmSellModel().vender(Integer.parseInt(txtId.getText().toString().trim()));
+		
+		System.out.println("compra añadida");
+		
 		vbRoot.getScene().getWindow().hide();
+		
+		
 	}
 
 	@FXML

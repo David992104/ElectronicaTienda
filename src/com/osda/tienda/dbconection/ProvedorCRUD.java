@@ -11,11 +11,9 @@ import javafx.collections.ObservableList;
 
 public class ProvedorCRUD extends ConnectionDB {
 	public ProvedorCRUD() {
-		try {
-			getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		
+			getConnection("Desde ProovedorCrud");
+		
 	}
 
 	

@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -31,7 +33,7 @@ public class LoginController {
 	private JFXButton btnCancel;
 	@FXML
 	private JFXButton btnStart;
-	
+
 	private LoginModel loginModel = new LoginModel();
 
 	@FXML
@@ -40,26 +42,46 @@ public class LoginController {
 	}
 
 	@FXML
-	void btnStartOnAction(ActionEvent event) throws ClassNotFoundException, SQLException {
-		if (txtUsuario.getText().toString().trim().equals("")) {
-			txtUsuario.forward();
-			Notification.showMessage("Revisa tu informacion");
-		}else if (txtPassword.getText().toString().equals("")) {
-			txtPassword.isFocused();
-			Notification.showMessage("Revisa tu informacion");
-		}else if (txtPassword.getText().toString() != "" && txtUsuario.getText().toString() != "") {
-			String url = loginModel.logNow(txtUsuario.getText().toString().trim(),
-					txtPassword.getText().toString().trim());
-			imgLogin.setImage(new Image(url));
-			
-			if (loginModel.isLogAcepted())				
-				loginModel.goToPrincipal(anchorPaneLogin);			
-		}
+	void btnStartOnAction(ActionEvent event) {
+		loginRevisionDatos();
 	}
 
 	@FXML
 	void lblForgetOnMouseClicked(MouseEvent event) {
 		loginModel.goToForegetPass();
+		anchorPaneLogin.getScene().getWindow().hide();
 	}
 
+	@FXML
+	void enterOnKeyPressed(KeyEvent event) {
+		if (event.getCode() == KeyCode.ENTER)
+			loginRevisionDatos();
+
+	}
+
+	private void loginRevisionDatos() {
+		try {
+			String usuario = txtUsuario.getText().toString().trim();
+			String pass = txtPassword.getText().toString();
+			String url = "";
+			
+			if (usuario.equals("")) {
+				txtUsuario.forward();
+				Notification.showMessage("Revisa tu informacion");
+			} else if (pass.equals("")) {
+				txtPassword.isFocused();
+				Notification.showMessage("Revisa tu informacion");
+			} else /*if (pass != "" && usuario != "") */{
+				System.out.println("Pasando a loginModel");
+				url = loginModel.logNow(usuario, pass);
+				imgLogin.setImage(new Image(url));
+				txtPassword.setText("");
+
+				if (loginModel.isLogAcepted())
+					loginModel.goToPrincipal(anchorPaneLogin);
+			}
+		} catch (ClassNotFoundException cnfe) {
+			cnfe.printStackTrace();
+		} 
+	}
 }

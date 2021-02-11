@@ -27,7 +27,7 @@ public class AddProdModel {
 
 		String result = "";
 
-		ConnectionDB.getConnection();
+		ConnectionDB.getConnection("Desde añadir producto modelo");
 		ResultSet prodMessage = new ProductoCRUD().addProducto(codigoB, descripccion, precio, existencias);
 		while (prodMessage.next()) {
 			result = prodMessage.getString(1);

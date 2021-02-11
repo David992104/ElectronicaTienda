@@ -12,51 +12,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneLogin" maxHeight="275.0"
-	maxWidth="200.0" minHeight="250.0" minWidth="200.0" prefHeight="275.0"
-	prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.osda.tienda.login.LoginController">
-   <children>
-      <VBox alignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <ImageView fx:id="imgLogin" fitHeight="122.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="/resources/user.png" />
-               </image>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </ImageView>
-            <JFXTextField fx:id="txtUsuario" focusColor="#b27202" labelFloat="true" promptText="Usuario">
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXPasswordField fx:id="txtPassword" labelFloat="true" promptText="Contraseña">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </JFXPasswordField>
-            <Label fx:id="lblForget" alignment="TOP_RIGHT" contentDisplay="RIGHT" onMouseClicked="#lblForgetOnMouseClicked" prefHeight="14.0" prefWidth="181.0" text="¿Olvidaste contraseña?" textFill="#cd0909">
-               <font>
-                  <Font size="11.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Label>
-            <HBox alignment="TOP_RIGHT" prefHeight="41.0" prefWidth="180.0">
-               <children>
-                  <JFXButton fx:id="btnCancel" onAction="#btnCancelOnAction" ripplerFill="#bf0505" text="Cancelar" />
-                  <JFXButton fx:id="btnStart" alignment="CENTER" buttonType="RAISED" onAction="#btnStartOnAction" ripplerFill="#9e6708" text="Iniciar" wrapText="true">
-                     <HBox.margin>
-                        <Insets left="25.0" />
-                     </HBox.margin>
-                  </JFXButton>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane fx:id="anchorPaneLogin" maxHeight="275.0" maxWidth="200.0" minHeight="250.0" minWidth="200.0" onKeyPressed="#enterOnKeyPressed" prefHeight="275.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osda.tienda.login.LoginController">
+	<children>
+		<VBox alignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+			<children>
+				<ImageView fx:id="imgLogin" fitHeight="122.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="/resources/user.png" />
+					</image>
+					<VBox.margin>
+						<Insets bottom="15.0" />
+					</VBox.margin>
+				</ImageView>
+				<JFXTextField fx:id="txtUsuario" focusColor="#b27202" labelFloat="true" promptText="Usuario">
+					<VBox.margin>
+						<Insets bottom="15.0" />
+					</VBox.margin>
+				</JFXTextField>
+				<JFXPasswordField fx:id="txtPassword" labelFloat="true" promptText="Contraseña">
+					<VBox.margin>
+						<Insets />
+					</VBox.margin>
+				</JFXPasswordField>
+				<Label fx:id="lblForget" alignment="TOP_RIGHT" contentDisplay="RIGHT" onMouseClicked="#lblForgetOnMouseClicked" prefHeight="14.0" prefWidth="181.0" text="¿Olvidaste contraseña?" textFill="#cd0909">
+					<font>
+						<Font size="11.0" />
+					</font>
+					<VBox.margin>
+						<Insets bottom="20.0" />
+					</VBox.margin>
+				</Label>
+				<HBox alignment="TOP_RIGHT" prefHeight="41.0" prefWidth="180.0">
+					<children>
+						<JFXButton fx:id="btnCancel" onAction="#btnCancelOnAction" ripplerFill="#bf0505" text="Cancelar" />
+						<JFXButton fx:id="btnStart" alignment="CENTER" buttonType="RAISED" onAction="#btnStartOnAction" ripplerFill="#9e6708" text="Iniciar" wrapText="true">
+							<HBox.margin>
+								<Insets left="25.0" />
+							</HBox.margin>
+						</JFXButton>
+					</children>
+				</HBox>
+			</children>
+		</VBox>
+	</children>
 </AnchorPane>

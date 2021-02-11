@@ -25,12 +25,8 @@ public class addProveedorModel {
 	public boolean addProvedor(String rsocial, String rfc, String correo, String direccion, String telefono) {
 		String result = "";
 
-		try {
-			ConnectionDB.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			ConnectionDB.getConnection("Desde el añadir provedor modelo");
+		
 		ResultSet prodMessage;
 		try {
 			prodMessage = new ProvedorCRUD().addProvedor(rsocial, rfc, correo, direccion, telefono);
